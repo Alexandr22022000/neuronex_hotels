@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let end = document.getElementById('end-date');
         end.setAttribute('type', 'date');
         end.addEventListener('input', (e) => {
-            if (UI.onUpdateDate) UI.onUpdateDate(new Date(e.target.value), 'start');
+            if (UI.onUpdateDate) UI.onUpdateDate(new Date(e.target.value), 'end');
         })
     }
 });
