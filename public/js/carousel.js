@@ -1,7 +1,10 @@
 const createCarouselBlock = (data) => {
     let carouselElem = document.createElement('div');
-    carouselElem.classList.add('main-carousel');
+    carouselElem.classList.add('glider-contain');
+    carouselElem.innerHTML = '<a class="glider-prev"><</a><a class="glider-next">></a>';
 
+    let elemsList = document.createElement('div');
+    elemsList.classList.add('glider');
 
     data.images.forEach((el) => {
         let carouselItem = document.createElement('div');
@@ -11,26 +14,25 @@ const createCarouselBlock = (data) => {
         img.classList.add('b-carousel__img');
         img.src = el.toString();
         carouselItem.appendChild(img);
-        carouselElem.appendChild(carouselItem);
+        elemsList.appendChild(carouselItem);
     });
 
-    setTimeout(() => {
-        /*new Carousel({
-            sel: {
-                main: carouselElem,
-                wrap: carouselWrap,
-                children: carouselWrap.children,
-                prev: prevButton,
-                next: nextButton
-            }
-        });*/
-        let flkty = new Flickity( carouselElem, {
-            // options
-            cellAlign: 'left',
-            contain: true
-        });
+    carouselElem.prepend(elemsList);
 
-    }, 100);
+    setTimeout(() => {
+        new Glider(elemsList, {
+            slidesToScroll: 1,
+            slidesToShow: 0.9,
+            draggable: true,
+            scrollLockDelay: 150,
+            dragVelocity: 1.5,
+            scrollLock: true,
+            arrows: {
+                prev: '.glider-prev',
+                next: '.glider-next'
+            }
+        })
+    }, 1);
 
 
     return carouselElem

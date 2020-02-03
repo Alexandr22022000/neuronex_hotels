@@ -183,7 +183,6 @@ body {
 .carousel-wp {
     width: 100%;
     height: 100%;
-    max-width: 320px;
 }
 
 /*Малые девайсы («ландшафтные телефоны», >= 576px)*/
@@ -195,6 +194,12 @@ body {
 
 /*Средние девайсы («таблетки», >= 768px)*/
 @media (min-width: 768px) {
+    .carousel-cell {
+        max-height: 250px;
+    }
+    .b-carousel__img {
+        max-height: 250px;
+    }
     .head-name {
         font-size: 2.5em;
     }
