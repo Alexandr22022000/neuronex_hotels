@@ -1,0 +1,181 @@
+*, *:after, *:before {
+    font-family: 'Roboto', sans-serif;
+}
+
+.datepicker__wrapper {
+    position: absolute!important;
+}
+
+.widget-wrapper {
+    width: 100%;
+    height: 250px;
+    background-color: #febb02;
+}
+
+.widget-subm-info {
+    width: calc(100% - 5px);
+    padding-left: 5px;
+    margin-top: 5px;
+    order: 2;
+}
+.widget-subm-button {
+    margin-top: 5px;
+    width: 100%;
+    order: 1;
+}
+
+.widget-subm-button button {
+    width: 100%;
+    background-color: #0095d9;
+    color: #ffffff;
+    border-radius: 6px;
+    border: #f2f3e6 solid 1px;
+    font-size: 1.5em;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.widget-subm-info-ex {
+    margin-left: 10px;
+    border-radius: 50px;
+    background-color: black;
+    color: white;
+    padding-left: 6px;
+    padding-right: 6px;
+    cursor: pointer;
+}
+
+.widget-details {
+    display: none;
+}
+
+.widget-date-end,
+.widget-date-begin {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.widget-inputs {
+    width: 90%;
+}
+.widget-submission {
+    width: 90%;
+}
+
+.widget-date-end span,
+.widget-date-begin span {
+    display: none;
+}
+
+.widget-date-end input,
+.widget-date-begin input {
+    outline: none;
+    width: 100%;
+    font-size: 1.3em;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    background-color: white;
+}
+
+@media (min-width: 576px) {
+
+}
+
+/*Средние девайсы («таблетки», >= 768px)*/
+@media (min-width: 768px) {
+    .widget-wrapper {
+        height: 200px;
+    }
+    .widget-wrapper {
+        width: 95%;
+    }
+    .widget-inputs {
+        width: calc(65% - 40px);
+        height: 95%;
+        padding-left: 30px;
+        padding-right: 10px;
+        flex-direction: column;
+    }
+    .widget-submission {
+        width: calc(35% - 10px);
+        padding-right: 10px;
+        height: 95%;
+    }
+
+    .widget-dates,
+    .widget-details,
+    .widget-organs {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .widget-dates {
+        height: 30%;
+    }
+    .widget-details {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    .widget-organs {
+        margin-top: 2%;
+    }
+
+    .widget-details select {
+        height: 35px;
+        margin-right: 2%;
+        border-radius: 6px;
+        font-size: 1.3em;
+        width: 40%;
+        padding-left: 15px;
+        outline: none;
+    }
+
+    .widget-date-end,
+    .widget-date-begin {
+        width: 45%;
+    }
+    .widget-date-end span,
+    .widget-date-begin span {
+        width: 100%;
+        font-size: 1.3em;
+        display: block;
+    }
+    .widget-date-end input,
+    .widget-date-begin input {
+        margin-bottom: unset;
+    }
+    .widget-subm-info {
+        width: calc(100% - 5px);
+        padding-left: 5px;
+        order: 1;
+    }
+
+    .widget-subm-button {
+        margin-top: 5px;
+        width: 100%;
+        order: 2;
+    }
+
+    .widget-subm-button button:hover {
+         background-color: #0067a1;
+     }
+    .widget-subm-button button:active {
+        background-color: #00406c;
+    }
+}
+
+/*Большие девайсы (десктопы, >= 992px)*/
+@media (min-width: 992px) {
+
+}
+
+/*Экстрабольшие девайсы (большие десктопы, >= 1200px)*/
+@media (min-width: 1200px) {
+
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>widget</title>
+    <link rel="stylesheet" href="../css/widget.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../vendor/datepicker/datepicker.min.css">
+    <script src="../vendor/datepicker/datepicker.min.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/query.js"></script>
+    <script src="../js/ajax.js"></script>
+    <script src="../js/widget.js"></script>
+    <script src="script.js"></script>
+</head>
+<body style="margin: 0 auto">
+<div class="container vert-center hor-center" style="height: 100vh">
+    <div class="widget-wrapper flex-container hor-center vert-center">
+        <div class="widget-inputs flex-container sp-between">
+            <div class="widget-dates container sp-between">
+                <div class="widget-date-begin">
+                    <span>Приезжаю</span>
+                    <input id="start-date" type="text" class="border-black border-2">
+                </div>
+                <div class="widget-date-end">
+                    <span>Уезжаю</span>
+                    <input id="end-date" type="text" class="border-black border-2">
+                </div>
+            </div>
+            <div class="widget-details vert-center">
+                <select class="border-black border-2">
+                    <option value="">1 взрослый</option>
+                    <option value="dog">2 взрослых</option>
+                </select>
+                <select class="border-black border-2">
+                    <option value="">Без детей</option>
+                    <option value="">1 ребенок</option>
+                    <option value="">2 ребенока</option>
+                </select>
+                <div class="widget-organs vert-center">
+                    <label>
+                        <input type="checkbox">
+                        показать опции для организаций
+                    </label>
+                </div>
+            </div>
+
+        </div>
+        <div class="widget-submission flex-container vert-center">
+            <div class="widget-subm-info">
+                <span>Прямое бронирование в отеле.</span>
+                <span class="widget-subm-info-ex">?</span> <br>
+                <span>Гарантируем лучшую стоимость.</span>
+            </div>
+            <div class="widget-subm-button">
+                <button>Проверить цены</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

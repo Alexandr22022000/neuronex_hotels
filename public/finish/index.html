@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/page.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <script src="../js/carousel.js"></script>
+    <link rel="stylesheet" href="../css/marks.css">
+    <link rel="stylesheet" href="../css/room-details.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="../js/ui.js"></script>
+    <script src="../js/ajax.js"></script>
+    <script src="../js/query.js"></script>
+    <script src="../js/roomDetails.js"></script>
+    <link rel="stylesheet" href="../vendor/scroller/flickity.css">
+    <script src="../vendor/scroller/flickity.pkgd.min.js"></script>
+    <style id="hotel-hider">
+        .marks {
+            display: none!important;
+        }
+        .contacts {
+            width: 60%;
+        }
+        #hotel-name {
+            width: 100%;
+            height: 50px;
+        }
+        #hotel-address {
+            width: 80%;
+            height: 30px;
+            margin-top: 5px;
+        }
+        #hotel-number {
+            width: 50%;
+            height: 30px;
+            margin-top: 5px;
+        }
+    </style>
+    <style id="nav-hider">
+        .img-holder {
+            background-image: none;
+        }
+        .head-container {
+            display: none;
+        }
+    </style>
+    <style id="apart-hider">
+        .order-dates-wp {
+            display: none;
+        }
+        .room-feat-sum {
+            padding: 0;
+            height: 50px;
+        }
+        .room-feat-sum div {
+            display: none;
+        }
+        .room-feat-feat div {
+            display: none;
+        }
+        .room-feat-feat {
+            padding: 0;
+        }
+        .order-checks-taxi {
+            display: none;
+        }
+        .order-data {
+            height: 170px;
+            margin-top: 10px;
+        }
+        .room-card-img-hl {
+            height: 170px;
+            margin-top: 10px;
+        }
+    </style>
+    <style id="user-data-hider">
+        .user-data-col {
+            display: none;
+        }
+        .user-data-form div, .user-data-form span  {
+            display: none!important;
+        }
+        .user-data-form {
+            padding: 0;
+            height: 30vh;
+        }
+    </style>
+    <style id="loader">
+        @keyframes loading {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        .loading {
+            position: relative!important;
+            background-color: #E2E2E2!important;
+            overflow: hidden;
+        }
+        .loading::after {
+            display: block;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: translateX(-100%);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+            animation: loading 1.5s infinite;
+        }
+    </style>
+    <script src="script.js"></script>
+</head>
+<body>
+<div class="content-wrapper container hor-center">
+    <div class="content flex-container vert-top">
+        <div class="page-header container sp-between">
+            <div class="contacts">
+                <div class="em2-5 loading" id="hotel-name"></div>
+                <div class="address em1-5 loading" id="hotel-address"></div>
+                <div class="em1-5 loading" id="hotel-number"></div>
+            </div>
+            <div class="marks flex-container hor-center vert-top">
+                <div class="stars-container container" id="hotel-rank">
+                </div>
+                <div class="container sp-between vert-top border-bottom-1 border-black">
+                    <span class="mark-summary em2" id="hotel-rank-nums"></span>
+                    <span class="feedback-amount">(230 отзывов)</span>
+                </div>
+                <div class="curr-lang-wp container sp-between">
+                    <select class="">
+                        <option value="">RUB</option>
+                        <option value="">DOL</option>
+                    </select>
+                    <div>
+                        <span class="flag-holder"><img src="../images/flag-ru.svg" width="30"></span>
+                        <select class="">
+                            <option value="">RU</option>
+                            <option value="">EN</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="book-nav-bar container hor-center loading">
+            <div class="img-holder flex-container vert-center">
+                <div class="head-container flex-container vert-center sp-evenly head-first-stg">
+                    <div class="head-container-date flex-container">
+                        <div class="border-right-1 border-black head-block-padding" id="begin-date"></div>
+                        <div class="border-left-1 border-black head-block-padding" id="end-date"></div>
+                    </div>
+                    <div class="head-container-date flex-container head-block-padding head-container-date-len" id="days-amount"></div>
+                </div>
+                <div class="head-container flex-container vert-center hor-center head-second-stg">Номера, цены</div>
+                <div class="head-container flex-container vert-center hor-center head-third-stg">Завершить бронирование</div>
+            </div>
+        </div>
+        <div class="room-details-wp container hor-center">
+        </div>
+    </div>
+</div>
+</body>
+</html>

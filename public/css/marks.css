@@ -1,0 +1,23 @@
+.stars-container {
+    height: 25px;
+}
+
+.marks {
+    width: 10%;
+    min-width: 180px;
+}
+
+.mark-summary {
+
+}
+
+.feedback-amount {
+    font-size: 0.9em;
+}
+
+.curr-lang-wp select{
+    font-size: 1.7em;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}

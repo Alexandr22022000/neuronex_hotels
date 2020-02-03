@@ -1,0 +1,295 @@
+textarea::-webkit-resizer {
+    display: none;
+}
+
+.order-checks-taxi input {
+    margin: 0;
+}
+
+.head-first-stg {
+    display: none;
+}
+
+.head-second-stg {
+    display: none;
+}
+
+.head-third-stg {
+    display: flex;
+    width: 100%;
+}
+
+.img-holder {
+    background-image: url(../images/solo-bar-3.svg);
+    background-size: 100% 100%;
+    height: 50px;
+    width: 93%;
+}
+.room-details {
+    width: 93%;
+    margin-bottom: 10px;
+}
+
+.order-dates-wp {
+    padding: 10px 15px 10px 15px;
+}
+
+.order-data {
+    background-color: #fffbd6;
+    flex-direction: column;
+}
+
+.start-time {
+    width: 100%;
+    text-align: right;
+}
+
+.pay-sum {
+    font-size: 1.4em;
+    font-weight: bold;
+    background-color: #e3f0e1;
+    color: #279940;
+    padding: 10px 15px 10px 15px;
+    width: calc(100% - 30px);
+}
+
+.room-feat-feat {
+    background-color: #e3f0e1;
+    color: #279940;
+    padding: 10px 15px 10px 15px;
+    width: calc(93% - 30px);
+}
+
+.feat-header {
+    width: 100%;
+    font-weight: bold;
+}
+
+.user-data-form {
+    background-color: #f9f5b1;
+    padding: 15px 15px 10px 15px;
+    width: calc(93% - 30px);
+}
+
+.simple-wrapper {
+    background-color: #fefefe;
+    padding: 3px;
+    width: calc(100% - 6px);
+    border-radius: 5px;
+}
+
+.form-label {
+    font-size: 0.8em;
+    -webkit-flex: 0 26%;
+    -ms-flex: 0 26%;
+    flex: 0 26%;
+    border-right: black solid 1px;
+}
+
+.form-input {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 auto;
+    -ms-flex: 1 auto;
+    flex: 1 auto;
+    border: none;
+    outline: none;
+    padding-left: 10px;
+}
+
+.confirm-button {
+    background-color: #0095d9;
+    outline: none;
+    color: #ffffff;
+    font-size: 1.1em;
+    border-radius: 5px;
+    border: #34aae0 solid 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.confirm-button:hover {
+    background-color: #006fa4;
+}
+
+.confirm-button:active {
+    background-color: #00527f;
+}
+
+.marged-bottom {
+    margin-bottom: 15px;
+}
+
+@media (min-width: 576px) {
+
+}
+
+/*Средние девайсы («таблетки», >= 768px)*/
+@media (min-width: 768px) {
+    .head-first-stg {
+        display: flex;
+    }
+    .head-third-stg {
+        width: calc(100% / 3);
+    }
+    .head-second-stg {
+        display: flex;
+    }
+    .img-holder {
+        background-image: url(../images/bar.svg);
+    }
+    .room-details-wp {
+        min-height: 100px;
+        padding-top: 30px;
+    }
+    .room-details {
+        width: 93%;
+    }
+    .room-card-img-hl {
+        height: 200px;
+    }
+    .room-card-header {
+        height: unset;
+        padding: unset;
+    }
+    .order-data {
+        flex-direction: column;
+        width: calc(100% - 320px - 2.5%);
+        height: 100%;
+        padding-left: 1.5%;
+    }
+    .order-dates-wp {
+        width: 40%;
+        padding: unset;
+    }
+    .end-time {
+        width: 100%;
+        text-align: right;
+    }
+    .room-feat-sum {
+        margin-top: 20px;
+        background-color: #caede2;
+        padding: 15px 3% 15px 3%;
+        width: calc(93% - 6%);
+    }
+    .feat-header {
+        width: unset;
+        color: #289b41;
+        font-weight: bold;
+        font-size: 1.3em;
+    }
+    .feat-data {
+        margin: 0;
+        padding-left: 10px;
+    }
+    .feat-data li {
+        display: inline-block;
+        margin-right: 3px;
+        color: #289b41;
+    }
+    .feat-delim {
+        margin-right: 3px;
+        font-size: 1.3em;
+        color: #289b41;
+        font-weight: bold;
+    }
+    .pay-sum {
+        width: unset;
+        background-color: unset;
+        font-size: 1.4em;
+        padding: unset;
+    }
+    .py-sum-header {
+        margin-right: 10px;
+    }
+    .user-data-form {
+        margin-top: 20px;
+        height: 35vh;
+        padding: 10px;
+        width: calc(93% - 20px);
+    }
+    .user-data-col {
+        width: 30%;
+        margin-right: 3%;
+        height: 100%;
+        flex-direction: column;
+    }
+    .form-info-instr {
+        background-color: #caede2;
+        width: fit-content;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .form-info-uagr {
+        width: fit-content;
+        padding: 10px;
+    }
+    .form-label {
+        font-size: unset;
+        -webkit-flex: unset;
+        -ms-flex: unset;
+        flex: unset;
+        width: unset;
+        border: unset;
+    }
+    .form-input {
+        -webkit-box-flex: unset;
+        -webkit-flex: unset;
+        -ms-flex: unset;
+        flex: unset;
+        margin-top: 5px;
+        width: calc(100% - 10px);
+        font-size: 1.3em;
+        border-radius: 5px;
+        padding: 5px;
+        border: #d1d1d1 solid 1px;
+    }
+    .form-notes {
+        margin-top: 5px;
+        width: calc(100% - 10px);
+        resize: vertical;
+    }
+    .wide-wrapper {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border-color: #fefdeb;
+        border-bottom: #fefdeb solid 2px;
+        border-top: #fefdeb solid 2px;
+        height: calc(50% - 30px);
+        width: 80%;
+    }
+    #notes {
+        height: calc(80% - 10px);
+        font-size: 1.3em;
+        outline: none;
+        border-radius: 5px;
+        padding: 5px;
+        border: #d1d1d1 solid 1px;
+    }
+    .simple-wrapper {
+        background-color: unset;
+        padding: unset;
+        height: 25%;
+        width: 80%;
+        border-radius: unset;
+    }
+    .confirm-wrapper {
+        flex-direction: column;
+        border: none;
+    }
+    .confirm-button {
+        font-size: 1.3em;
+        width: unset;
+    }
+}
+
+/*Большие девайсы (десктопы, >= 992px)*/
+@media (min-width: 992px) {
+
+}
+
+/*Экстрабольшие девайсы (большие десктопы, >= 1200px)*/
+@media (min-width: 1200px) {
+
+}
