@@ -2,12 +2,17 @@ let start, end;
 
 document.addEventListener('DOMContentLoaded', () => {
     document.isNarrow = document.body.clientWidth < 768;
-    if (!document.isNarrow) {
+
+    if (!isMobileOS()) {
         start = datepicker('#start-date', {
             id: 1,
             minDate: new Date(),
             formatter: (input, date, instance) => {
                 input.value = date.toLocaleDateString(); // => '1/1/2099'
+                if (instance.isManualSet) {
+                    instance.isManualSet = false;
+                    return;
+                }
                 if (UI.onUpdateDate) UI.onUpdateDate(date, 'start');
             }
         });
@@ -15,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 1,
             formatter: (input, date, instance) => {
                 input.value = date.toLocaleDateString(); // => '1/1/2099'
+                if (instance.isManualSet) {
+                    instance.isManualSet = false;
+                    return;
+                }
                 if (UI.onUpdateDate) UI.onUpdateDate(date, 'end');
             }
         });
@@ -36,13 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 UI.setDates = function (datesObj) {
     if (!start || !end) return;
-    if (document.isNarrow) {
+    if (isMobileCachedResult) {
         start.value = new Date(datesObj.start - datesObj.start.getTimezoneOffset() * 60 * 1000).toISOString().slice(0, 10);
         end.value = new Date(datesObj.end - datesObj.start.getTimezoneOffset() * 60 * 1000).toISOString().slice(0, 10);
-        if (UI.onUpdateDate) UI.onUpdateDate(new Date(start.value), 'start');
-        if (UI.onUpdateDate) UI.onUpdateDate(new Date(end.value), 'end');
     }
     else {
+        start.isManualSet = true;
+        end.isManualSet = true;
         start.setDate(datesObj.start);
         end.setDate(datesObj.end);
     }

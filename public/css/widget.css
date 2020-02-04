@@ -8,7 +8,7 @@
 
 .widget-wrapper {
     width: 100%;
-    height: 250px;
+    height: 270px;
     background-color: #febb02;
 }
 
@@ -68,7 +68,7 @@
 
 .widget-date-end span,
 .widget-date-begin span {
-    display: none;
+
 }
 
 .widget-date-end input,
