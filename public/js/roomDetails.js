@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    document.isMobile = document.body.clientWidth < 768;
+    document.isNarrow = document.body.clientWidth < 768;
     setContent();
 });
 
@@ -55,7 +55,7 @@ const setContent = () => {
         });
         addEventListeners();
     }, 1);
-    if (!document.isMobile) setDesktopVersion();
+    if (!document.isNarrow) setDesktopVersion();
     else setMobileVersion();
 };
 

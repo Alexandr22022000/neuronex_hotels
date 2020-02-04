@@ -1,8 +1,8 @@
 let start, end;
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.isMobile = document.body.clientWidth < 768;
-    if (!document.isMobile) {
+    document.isNarrow = document.body.clientWidth < 768;
+    if (!document.isNarrow) {
         start = datepicker('#start-date', {
             id: 1,
             minDate: new Date(),
@@ -36,9 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 UI.setDates = function (datesObj) {
     if (!start || !end) return;
-    if (document.isMobile) {
+    if (document.isNarrow) {
         start.value = new Date(datesObj.start - datesObj.start.getTimezoneOffset() * 60 * 1000).toISOString().slice(0, 10);
         end.value = new Date(datesObj.end - datesObj.start.getTimezoneOffset() * 60 * 1000).toISOString().slice(0, 10);
+        if (UI.onUpdateDate) UI.onUpdateDate(new Date(start.value), 'start');
+        if (UI.onUpdateDate) UI.onUpdateDate(new Date(end.value), 'end');
     }
     else {
         start.setDate(datesObj.start);

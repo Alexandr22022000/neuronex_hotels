@@ -21,11 +21,11 @@ UI.setApartments = function (apartments, days) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    document.isMobile = document.body.clientWidth < 768;
+    document.isNarrow = document.body.clientWidth < 768;
 
     window.addEventListener('resize', () => {
-        if (!document.isMobile && document.body.clientWidth < 768 || document.isMobile && document.body.clientWidth >= 768) {
-            document.isMobile = document.body.clientWidth < 768;
+        if (!document.isNarrow && document.body.clientWidth < 768 || document.isNarrow && document.body.clientWidth >= 768) {
+            document.isNarrow = document.body.clientWidth < 768;
             let roomList = document.querySelector('.room-scroller');
             roomList.innerHTML = '';
             lastApartments.forEach((el) => {
@@ -44,7 +44,7 @@ const addRoomList  = (rooms, days) => {
 };
 
 const createRoomCard = (data, days) => {
-    if (document.isMobile) {
+    if (document.isNarrow) {
         return createRoomCardMobile(data, days);
     }
     else {
@@ -95,7 +95,7 @@ const createImageBlock = (data) => {
     imgHoldElem.classList.add('room-card-img-hl');
     imgHoldElem.classList.add('flex-container');
     imgHoldElem.classList.add('vert-center');
-    if (document.isMobile)
+    if (document.isNarrow)
         imgHoldElem.classList.add('hor-center');
     else
         imgHoldElem.classList.add('hor-left');
@@ -115,7 +115,7 @@ const createImageBlock = (data) => {
 const createHeaderBlock = (data) => {
     let cardHeaderElem = document.createElement('div');
     cardHeaderElem.classList.add('room-card-header');
-    if (!document.isMobile) {
+    if (!document.isNarrow) {
         cardHeaderElem.innerText = data.name;
     }
     else {
