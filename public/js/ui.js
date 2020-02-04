@@ -63,13 +63,9 @@ let UI = {
     },
 
     formatNumber: function (number) {
-        let num = number;
-        let result = [];
-        while(num) {
-            result.push(num % 1000);
-            num = Math.floor(num / 1000);
-        }
-        return result.reverse().join('\'');
+        return number.toString().split('').reverse().map((el, index) => {
+            return (index + 1)%3 === 0? "'" + el : el;
+        }).reverse().join('');
     },
 
     removeHider: function (hiderId) {
