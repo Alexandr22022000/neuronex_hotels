@@ -1,11 +1,11 @@
 let QUERY = {
     paramsToKeyval: (str) => {
-        return str.split(/[&;]/).map(el => {
+        let result = {};
+        str.split(/[&;]/).forEach(el => {
             let keyvalArr = el.split('=');
-            let result = {};
             result[keyvalArr[0]] = keyvalArr[1];
-            return result;
         });
+        return result;
     },
 
     paramsToString: (keyvals) => {
@@ -18,8 +18,20 @@ let QUERY = {
         return this.paramsToKeyval(window.location.search.slice(1))
     },
 
+    appendQuery: (keyval) => {
+        let search  = window.location.search.slice(1);
+        if (!search) return QUERY.paramsToString(keyval);
+        search = QUERY.paramsToKeyval(search);
+        console.log(search)
+        Object.keys(keyval).forEach((el) => {
+            console.log(el);
+            search[el] = keyval[el];
+        });
+        return QUERY.paramsToString(search);
+    },
+
     set: (keyval) => {
-        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + "?" + QUERY.paramsToString(keyval);
+        const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + QUERY.appendQuery(keyval);
         window.history.replaceState(null, null, newUrl);
     }
 };
