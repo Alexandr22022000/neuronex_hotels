@@ -22,9 +22,7 @@ let QUERY = {
         let search  = window.location.search.slice(1);
         if (!search) return QUERY.paramsToString(keyval);
         search = QUERY.paramsToKeyval(search);
-        console.log(search)
         Object.keys(keyval).forEach((el) => {
-            console.log(el);
             search[el] = keyval[el];
         });
         return QUERY.paramsToString(search);
