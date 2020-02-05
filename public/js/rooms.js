@@ -200,7 +200,7 @@ const createPriceBlock = (data, days) => {
     redPriceElem.classList.add('room-card-price-red');
     redPriceElem.classList.add('flex-container');
     redPriceElem.classList.add('hor-right');
-    redPriceElem.innerText = `скидка = ${UI.formatNumber(data.salePrice)} ₽`;
+    redPriceElem.innerText = `скидка = ${UI.formatNumber((data.price * +days) - data.salePrice)} ₽`;
 
     let cardButtonHolder = document.createElement('div');
     cardButtonHolder.classList.add('room-card-price-btn-hl');
@@ -215,7 +215,7 @@ const createPriceBlock = (data, days) => {
     cardButtonSummary.classList.add('room-card-price-summary');
     cardButtonSummary.classList.add('flex-container');
     cardButtonSummary.classList.add('vert-center');
-    cardButtonSummary.innerText = `${document.isNarrow? "Итого: " : ""}${UI.formatNumber(data.price * days - data.salePrice)} ₽`;
+    cardButtonSummary.innerText = `${document.isNarrow? "Итого: " : ""}${UI.formatNumber(data.salePrice)} ₽`;
 
     let cardButtonWp = document.createElement('a');
     cardButtonWp.classList.add('room-card-price-button');

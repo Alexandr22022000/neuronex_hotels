@@ -8,7 +8,7 @@ UI.setApartment = function (obj) {
 
     let {name, description, images, price, salePrice} = obj;
     document.getElementById('room-name').innerText = name;
-    document.getElementById('summary-price').innerText = this.formatNumber(price * this.dateObject.nights - salePrice) + ' ₽';
+    document.getElementById('summary-price').innerText = this.formatNumber(salePrice) + ' ₽';
     let dateStart = this.dateObject.start;
     let dateEnd = this.dateObject.end;
     document.getElementById('order-dates').innerHTML =
