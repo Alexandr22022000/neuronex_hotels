@@ -214,15 +214,13 @@ const createPriceBlock = (data, days) => {
     cardButtonSummary.classList.add('vert-center');
     cardButtonSummary.innerText = `${UI.formatNumber(data.price * days - data.salePrice)} ₽`;
 
-    let cardButtonWp = document.createElement('div');
+    let cardButtonWp = document.createElement('a');
     cardButtonWp.classList.add('room-card-price-button');
+    cardButtonWp.href = data.link + window.location.search;
 
     let cardButton = document.createElement('button');
     cardButton.classList.add('green-button-price');
     cardButton.innerText = 'Выбрать';
-    cardButton.addEventListener('click', () => {
-        if (UI.onChoseApartment) UI.onChoseApartment(data.link);
-    });
 
     cardButtonWp.appendChild(cardButton);
     cardButtonHolder.appendChild(cardButtonSummary);
