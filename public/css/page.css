@@ -192,6 +192,26 @@ body {
     }
 }
 
+.head-second-stg a {
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    cursor: pointer;
+    color: black;
+}
+
+.dates-link {
+    cursor: pointer;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+}
+
 /*Средние девайсы («таблетки», >= 768px)*/
 @media (min-width: 768px) {
     .carousel-cell {

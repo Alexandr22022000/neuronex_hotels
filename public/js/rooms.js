@@ -23,6 +23,8 @@ UI.setApartments = function (apartments, days) {
 document.addEventListener('DOMContentLoaded', () => {
     document.isNarrow = document.body.clientWidth < 768;
 
+    document.querySelector('.dates-link').href = `${window.location.origin}/firstpage${window.location.search}`;
+
     window.addEventListener('resize', () => {
         if (!document.isNarrow && document.body.clientWidth < 768 || document.isNarrow && document.body.clientWidth >= 768) {
             document.isNarrow = document.body.clientWidth < 768;
@@ -35,11 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-const addRoomList  = (rooms, days) => {
+const addRoomList  = (rooms, nights) => {
     let roomList = document.querySelector('.room-scroller');
     roomList.innerHTML = '';
     rooms.forEach((el) => {
-        roomList.appendChild(createRoomCard(el, days))
+        roomList.appendChild(createRoomCard(el, nights))
     });
 };
 
@@ -246,3 +248,4 @@ const createHiddenBodyBlock = (data) => {
     cardBodyElem.hide();
     return cardBodyElem;
 };
+

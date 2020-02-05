@@ -23,26 +23,25 @@ let UI = {
         rank.innerHTML = '';
         let ranksArray = [];
         for (let i = 0; i < Math.floor(+hotelObj.rank); ++i) {
-            ranksArray.push('<img src="images/full.svg" width="10%" alt="full star">');
+            ranksArray.push('<img src="../images/full.svg" width="10%" alt="full star">');
         }
         if (hotelObj.rank - Math.floor(+hotelObj.rank) > 0) {
-            ranksArray.push('<img src="images/half.svg" width="10%" alt="half of star">');
+            ranksArray.push('<img src="../images/half.svg" width="10%" alt="half of star">');
         }
         for (let i = 0; i < Math.floor(10 - hotelObj.rank); ++i) {
-            ranksArray.push('<img src="images/empty.svg" width="10%" alt="half of star">');
+            ranksArray.push('<img src="../images/empty.svg" width="10%" alt="half of star">');
         }
         rank.innerHTML = ranksArray.join('');
     },
 
     setDates: function (datesObj)  {
-        this.removeHider('nav-hider');
         this.dateObject = datesObj;
         let startDate = document.getElementById('begin-date');
         let endDate = document.getElementById('end-date');
         let daysAmount = document.getElementById('days-amount');
 
         if (!startDate || !endDate || !daysAmount) return;
-
+        this.removeHider('nav-hider');
         document.querySelector('.book-nav-bar').classList.remove('loading');
 
         startDate.innerText = this.formatDate(datesObj.start);
@@ -63,8 +62,9 @@ let UI = {
     },
 
     formatNumber: function (number) {
-        return number.toString().split('').reverse().map((el, index) => {
-            return (index + 1)%3 === 0? "'" + el : el;
+        number = number.toString();
+        return number.split('').reverse().map((el, index) => {
+            return (index + 1)%3 === 0 && index < number.length - 1? "'" + el : el;
         }).reverse().join('');
     },
 

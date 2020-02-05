@@ -24,7 +24,7 @@
     order: 1;
 }
 
-.widget-subm-button button {
+.widget-subm-button div {
     width: 100%;
     background-color: #0095d9;
     color: #ffffff;
@@ -36,6 +36,19 @@
     outline: none;
     transition: 0.3s;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.widget-subm-button div:hover {
+    background-color: #0067a1;
+}
+.widget-subm-button div:active {
+    background-color: #00406c;
+}
+
+.widget-subm-button a {
+    color: #ffffff;
+    text-decoration: none;
 }
 
 .widget-subm-info-ex {
@@ -160,13 +173,6 @@
         margin-top: 5px;
         width: 100%;
         order: 2;
-    }
-
-    .widget-subm-button button:hover {
-         background-color: #0067a1;
-     }
-    .widget-subm-button button:active {
-        background-color: #00406c;
     }
 }
 
