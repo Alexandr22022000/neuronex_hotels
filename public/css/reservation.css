@@ -10,7 +10,42 @@
     width: 26%;
 }
 
+.book-nav-bar {
+    height: 50px;
+}
+
+.deny-button {
+    background-color: #969696;
+    outline: none;
+    color: #dcdcdc;
+    font-size: 1.1em;
+    border-radius: 5px;
+    border: #767676 solid 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    transition: 0.3s;
+    text-decoration: none;
+    text-align: center;
+}
+.deny-button:hover {
+    background-color: #767676;
+}
+.deny-button:active {
+    background-color: #666666;
+}
+
 @media (min-width: 768px) {
+    .input-block {
+        width: 50%;
+        height: 80px;
+    }
+    .user-data-col1 {
+        width: 60%;
+        margin-right: 3%;
+        height: 100%;
+        flex-direction: row;
+    }
     .form-input {
         padding: 0;
         border: none;
@@ -18,5 +53,14 @@
     .form-notes {
         padding: 0!important;
         border: none!important;
+    }
+    .book-nav-bar {
+        height: 30px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .book-nav-bar {
+        height: 50px;
     }
 }

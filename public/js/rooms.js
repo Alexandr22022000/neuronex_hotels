@@ -13,10 +13,10 @@ Element.prototype.hiddable = function () {
 let lastApartments = [];
 let lastDays = 1;
 
-UI.setApartments = function (apartments, days) {
+UI.setApartments = function (apartments, nights) {
     lastApartments = apartments;
-    lastDays = days;
-    addRoomList(apartments, days);
+    lastDays = nights;
+    addRoomList(apartments, nights);
     UI.removeHider('card-hider');
 };
 

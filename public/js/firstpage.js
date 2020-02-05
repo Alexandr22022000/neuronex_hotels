@@ -53,7 +53,7 @@ const updateSecondStepHref = () => {
 UI.setDates = function (datesObj) {
     this.dateObject = datesObj;
 
-    updateHeadersDates(datesObj.start, datesObj.end, datesObj.days);
+    updateHeadersDates(datesObj.start, datesObj.end, datesObj.nights);
 
     if (isMobileCachedResult) {
         start.value = new Date(datesObj.start - datesObj.start.getTimezoneOffset() * 60 * 1000).toISOString().slice(0, 10);

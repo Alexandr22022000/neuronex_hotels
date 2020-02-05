@@ -46,7 +46,7 @@ let UI = {
 
         startDate.innerText = this.formatDate(datesObj.start);
         endDate.innerText = this.formatDate(datesObj.end);
-        daysAmount.innerText = this.formatDays(datesObj.days);
+        daysAmount.innerText = this.formatDays(datesObj.nights);
     },
 
     formatDate: function (date) {

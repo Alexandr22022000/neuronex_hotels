@@ -8,7 +8,7 @@ UI.setApartment = function (obj) {
 
     let {name, description, images, price, salePrice} = obj;
     document.getElementById('room-name').innerText = name;
-    document.getElementById('summary-price').innerText = this.formatNumber(price * this.dateObject.days - salePrice) + ' ₽';
+    document.getElementById('summary-price').innerText = this.formatNumber(price * this.dateObject.nights - salePrice) + ' ₽';
     let dateStart = this.dateObject.start;
     let dateEnd = this.dateObject.end;
     document.getElementById('order-dates').innerHTML =
@@ -21,39 +21,66 @@ UI.setApartment = function (obj) {
     carousel.appendChild(createCarouselBlock({images}));
 };
 
+const setPropertyValue = (value, propId) => {
+    let elem = document.getElementById(propId);
+    if (document.isNarrow) {
+        if (value) {
+            elem.parentNode.removeAttribute('style');
+            elem.innerText = value;
+        }
+        else elem.parentNode.setAttribute('style', 'display: none!important');
+    }
+    else {
+        if (value) {
+            elem.parentNode.parentNode.removeAttribute('style');
+            elem.innerText = value;
+        }
+        else elem.parentNode.parentNode.setAttribute('style', 'display: none!important');
+    }
+};
+
+const updateStatus = (status) => {
+    if(status === 'CANCELED') {
+        document.getElementById('deny-button').setAttribute('style', 'display: none!important');
+        let featSum;
+        if (document.isNarrow) {
+            featSum = document.querySelector('.room-feat-feat');
+            featSum.classList.add('flex-container');
+            featSum.classList.add('hor-center');
+            document.querySelector('.pay-sum').setAttribute('style', 'display: none!important')
+        }
+        else {
+            featSum = document.querySelector('.room-feat-sum');
+            featSum.classList.remove('sp-between');
+            featSum.classList.add('hor-center');
+        }
+
+        featSum.innerHTML = 'БРОНИРОВАНИЕ ОТМЕНЕНО';
+        featSum.setAttribute('style', 'background-color: #969696;color: #dcdcdc;')
+    }
+};
+
 UI.setReservation = function(obj) {
     if (obj === undefined) return;
     if (obj === null) return;
     this.removeHider('user-data-hider');
 
-
-    let {name, phone, email, wishes, status, humans, children} = obj;
-    let nameElem = document.getElementById('name');
-    let surname = document.getElementById('surname');
-    if (surname) {
-        let nameArr = name.split(' ');
-        nameElem.innerText = nameArr[0];
-        surname.innerText = nameArr.slice(1).join(' ');
-    }
-    else nameElem.innerText = name;
-    document.getElementById('number').innerText = phone;
-    document.getElementById('notes').innerText = wishes;
-    document.getElementById('email').innerText = email;
-    document.getElementById('humans').innerText = humans;
-    document.getElementById('children').innerText = children;
+    Object.keys(obj).forEach((el) => {
+        if (el === 'status') return updateStatus(obj[el]);
+        setPropertyValue(obj[el], el);
+    });
     document.querySelector('.user-data-form').classList.remove('loading');
-};
-
-const removeSkeleton = () => {
-    let style = document.getElementById('loaderSkeleton');
-    if (!style) return;
-    style.remove();
 };
 
 document.addEventListener('DOMContentLoaded', () => {
     document.isNarrow = document.body.clientWidth < 768;
 
-    setContent()
+    setContent();
+    setTimeout(() => {
+        document.getElementById('deny-button').addEventListener('click', event => {
+            if (UI.onCancelReservation) UI.onCancelReservation();
+        });
+    }, 1);
 });
 
 const setContent = () => {
@@ -84,7 +111,7 @@ const setDesktopVersion = () => {
             </div>
     <div class="room-details room-feat-sum flex-container sp-between loading">
                 <div class="flex-container vert-center">
-                    <span class="feat-header"><span><img src="images/confirm.svg" width="15"> </span> В ваше бронирование входит: </span>
+                    <span class="feat-header"><span><img src="../images/confirm.svg" width="15"> </span> В ваше бронирование входит: </span>
                     <ul class="feat-data">
                         <li>бесплатный wi-fi</li>
                         <li class="feat-delim">⋅</li>
@@ -97,55 +124,60 @@ const setDesktopVersion = () => {
                 </div>
             </div>
     <div class="room-details flex-container user-data-form loading">
-                <div class="user-data-col flex-container sp-between form-info">
-                    <div class="simple-wrapper">
-                        <label for="name" class="form-label">
-                            Имя
-                        </label>
-                        <div id="name" class="form-input"></div>
+                <div class="user-data-col1 flex-container sp-between form-info">
+                    <div class="input-block marged-bottom">
+                        <div class="simple-wrapper">
+                            <label for="name" class="form-label">
+                                Имя
+                            </label>
+                            <div id="name" class="form-input"></div>
+                        </div>
                     </div>
-                    <div class="simple-wrapper">
-                        <label for="number" class="form-label">
-                            Телефон
-                        </label>
-                        <div id="number" class="form-input"></div>
+                    <div class="input-block marged-bottom">
+                        <div class="simple-wrapper">
+                            <label for="phone" class="form-label">
+                                Телефон
+                            </label>
+                            <div id="phone" class="form-input"></div>
+                        </div>
                     </div>
-                    <div class="wide-wrapper">
-                        <label for="notes" class="form-label">
-                            Ваши пожелания:
-                        </label>
-                        <div id="notes" class="form-notes"></div>
+                    <div class="input-block marged-bottom">
+                        <div class="wide-wrapper">
+                            <label for="wishes" class="form-label">
+                                Ваши пожелания:
+                            </label>
+                            <div id="wishes" class="form-notes"></div>
+                        </div>
+                    </div>
+                     <div class="input-block marged-bottom">
+                        <div class="simple-wrapper">
+                            <label for="email" class="form-label">
+                                @ Электронная почта
+                            </label>
+                            <div id="email" class="form-input"></div>
+                        </div>
+                    </div>
+                     <div class="input-block marged-bottom">
+                        <div class="simple-wrapper">
+                            <label for="humans" class="form-label">
+                                Количество взрослых
+                            </label>
+                            <div id="humans" class="form-input"></div>
+                        </div>
+                    </div>
+                    <div class="input-block marged-bottom">
+                        <div class="simple-wrapper">
+                            <label for="children" class="form-label">
+                                Количество детей
+                            </label>
+                            <div id="children" class="form-input"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="user-data-col">
-                    <div class="simple-wrapper">
-                        <label for="surname" class="form-label">
-                            Фамилия
-                        </label>
-                        <div id="surname" class="form-input"></div>
-                    </div>
-                    <div class="simple-wrapper">
-                        <label for="email" class="form-label">
-                            @ Электронная почта
-                        </label>
-                        <div id="email" class="form-input"></div>
-                    </div>
-                    <div class="simple-wrapper">
-                        <label for="humans" class="form-label">
-                            Количество взрослых
-                        </label>
-                        <div id="humans" class="form-input"></div>
-                    </div>
-                    <div class="simple-wrapper">
-                        <label for="children" class="form-label">
-                            Количество детей
-                        </label>
-                        <div id="children" class="form-input"></div>
-                    </div>
-                </div>
+                
                 <div class="user-data-col flex-container hor-center vert-center">
                     <div class="flex-container hor-right confirm-wrapper">
-                        <button class="confirm-button" id="confirm-button">Отменить бронирование</button>
+                        <button class="deny-button" id="deny-button">Отменить бронирование</button>
                     </div>
                 </div>
             </div>
@@ -178,7 +210,7 @@ const setMobileVersion = () => {
     </div>
     <div class="room-details room-feat-feat">
         <div class="flex-container vert-center">
-            <div class="feat-header"><span><img src="images/confirm.svg" width="15"></span> В ваше бронирование входит: </div>
+            <div class="feat-header"><span><img src="../images/confirm.svg" width="15"></span> В ваше бронирование входит: </div>
             <div class="feat-data">
                 <span class="feat-delim">⋅</span>
                 <span>бесплатный wi-fi</span>
@@ -198,7 +230,7 @@ const setMobileVersion = () => {
             <div class="form-label flex-container vert-center table-cell table-cell-1">
                 Телефон
             </div>
-            <div id="number" class="form-input table-cell"></div>
+            <div id="phone" class="form-input table-cell"></div>
         </div>
         <div class="simple-wrapper flex-container marged-bottom table">
             <div class="form-label flex-container vert-center table-cell table-cell-1">
@@ -210,7 +242,7 @@ const setMobileVersion = () => {
             <div class="form-label flex-container vert-center table-cell table-cell-1">
                 Пожелания:
             </div>
-            <div id="notes" class="form-input table-cell"></div>
+            <div id="wishes" class="form-input table-cell"></div>
         </div>
         <div class="simple-wrapper flex-container marged-bottom table">
             <div class="form-label flex-container vert-center table-cell table-cell-1">
@@ -224,8 +256,8 @@ const setMobileVersion = () => {
             </div>
             <div id="children" class="form-input table-cell"></div>
         </div>
-        <div class="flex-container confirm-wrapper">
-            <button class="confirm-button" id="confirm-button">Отменить бронирование</button>
+        <div class="container confirm-wrapper">
+            <button class="deny-button" id="deny-button">Отменить бронирование</button>
         </div>
     </div>`
 };
