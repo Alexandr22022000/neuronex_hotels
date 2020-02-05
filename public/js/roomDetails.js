@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.isNarrow = document.body.clientWidth < 768;
+    document.querySelector('.dates-link').href = `${window.location.origin}/firstpage${window.location.search}`;
+    document.querySelector('.head-second-stg a').href = `${window.location.origin}/apartments${window.location.search}`;
     setContent();
 });
 
@@ -229,8 +231,8 @@ const setMobileVersion = () => {
                 <input id="wishes" class="form-input">
             </div>
         </div>
-        <div class="flex-container confirm-wrapper">
-            <button class="confirm-button" id="confirm-button">Завершить бронирование!</button>
+        <div class="container confirm-wrapper">
+            <a target="_self" class="confirm-button" id="confirm-button" href="${window.location.origin}/reservation${window.location.search}">Завершить бронирование!</a>
             <span style="font-size: 0.7em; font-style: italic">Вы сможете редактировать бронирование бесплатно</span>
         </div>
     </div>`

@@ -107,6 +107,8 @@ textarea::-webkit-resizer {
     padding-bottom: 10px;
     width: 100%;
     transition: 0.3s;
+    text-decoration: none;
+    text-align: center;
 }
 
 .confirm-button:hover {
