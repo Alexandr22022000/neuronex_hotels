@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.isNarrow = document.body.clientWidth < 768;
     document.querySelector('.dates-link').href = `${window.location.origin}/firstpage${window.location.search}`;
     document.querySelector('.head-second-stg a').href = `${window.location.origin}/apartments${window.location.search}`;
+    document.querySelector('.back-button').href = `${window.location.origin}/apartments${window.location.search}`;
     setContent();
 });
 
@@ -155,7 +156,7 @@ const setDesktopVersion = () => {
                     </div>
                     <div class="wide-button-wrapper flex-container hor-right confirm-wrapper">
                         <span style="font-size: 0.7em; font-style: italic">Вы сможете редактировать бронирование бесплатно</span>
-                        <button class="confirm-button" id="confirm-button">Завершить бронирование!</button>
+                        <a target="_self" class="confirm-button" id="confirm-button" href="${window.location.origin}/reservation${window.location.search}">Завершить бронирование!</a>
                     </div>
                 </div>
             </div>
