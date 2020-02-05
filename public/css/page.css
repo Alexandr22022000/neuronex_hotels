@@ -15,8 +15,10 @@ body {
     margin-top: 2%;
 }
 
-.contacts {
-
+.contacts a {
+    display: block;
+    text-decoration: none;
+    color: black;
 }
 
 .head-name {
@@ -183,6 +185,8 @@ body {
     width: 100%;
     height: 100%;
 }
+
+
 
 /*Малые девайсы («ландшафтные телефоны», >= 576px)*/
 @media (min-width: 576px) {

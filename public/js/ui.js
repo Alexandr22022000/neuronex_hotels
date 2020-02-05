@@ -14,6 +14,7 @@ let UI = {
         name.innerText = hotelObj.name;
         address.innerText = hotelObj.address;
         phone.innerText = hotelObj.phone;
+        phone.href = `phoneto:${hotelObj.phone}`;
         rankNum.innerText = hotelObj.rank;
 
         name.classList.remove('loading');
