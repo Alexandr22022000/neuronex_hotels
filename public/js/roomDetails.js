@@ -32,32 +32,42 @@ UI.setApartment = function (obj) {
 };
 
 UI.setError = function (errObj) {
-    let elem = document.createElement('div');
-    elem.style.color = 'red';
-    elem.classList.add('error-in-msg');
-    elem.innerText = errObj[Object.keys(errObj)[0]];
-    if (document.isNarrow) {
-        document.getElementById(Object.keys(errObj)[0]).parentNode.parentNode.appendChild(elem);
-    }
-    else {
-        document.getElementById(Object.keys(errObj)[0]).parentNode.appendChild(elem);
-    }
+    Object.keys(errObj).forEach((el) => {
+        let targetInput = document.getElementById(el);
+        if (!errObj[el]) {
+            removeError(targetInput);
+            return;
+        }
+        let elem = document.createElement('div');
+        elem.style.color = 'red';
+        elem.classList.add('error-in-msg');
+        elem.innerText = errObj[el];
+        if (document.isNarrow) {
+            targetInput.parentNode.parentNode.appendChild(elem);
+            targetInput.parentNode.setAttribute('style', 'border: red solid 1px;');
+        }
+        else {
+            targetInput.setAttribute('style', 'border: red solid 1px;');
+            targetInput.parentNode.appendChild(elem);
+        }
+    })
+
 };
 
 const removeError = (targetInput) => {
     if (document.isNarrow) {
+        targetInput.parentNode.removeAttribute('style');
         let elem = targetInput.parentNode.parentNode.querySelector('.error-in-msg');
         if (elem) elem.remove();
     }
     else {
+        targetInput.removeAttribute('style');
         let elem = targetInput.parentNode.querySelector('.error-in-msg');
         if (elem) elem.remove();
     }
 };
 
 const handleInput = (target, key) => {
-    removeError(target);
-
     if (UI.onUpdateInput) UI.onUpdateInput(target.value, key);
 };
 

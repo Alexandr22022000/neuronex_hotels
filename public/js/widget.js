@@ -56,3 +56,16 @@ UI.setDates = function (datesObj) {
         end.setDate(datesObj.end);
     }
 };
+
+UI.setGuests = function (humans, children) {
+    if (children > 1) {
+        document.getElementById('children').selectedIndex = children;
+    }
+    if (humans) {
+        document.getElementById('guests').selectedIndex = humans - 1;
+    }
+};
+
+UI.setLink = function (link) {
+    document.querySelector('.widget-subm-button a').href = link;
+};

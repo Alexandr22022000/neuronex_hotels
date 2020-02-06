@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Бронирование</title>
+    <link rel="stylesheet" href="../css/widget.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../css/page.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="../vendor/datepicker/datepicker.min.css">
+    <script src="../vendor/datepicker/datepicker.min.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/query.js"></script>
+    <script src="../js/ajax.js"></script>
+    <script src="../js/firstpage.js"></script>
+    <script src="script.js"></script>
+    <script src="../js/OSCheck.js"></script>
+    <style id="hotel-hider">
+        .marks {
+            display: none !important;
+        }
+
+        .contacts {
+            width: 60%;
+        }
+
+        #hotel-name {
+            width: 100%;
+            height: 50px;
+        }
+
+        #hotel-address {
+            width: 80%;
+            height: 30px;
+            margin-top: 5px;
+        }
+
+        #hotel-number {
+            width: 50%;
+            height: 30px;
+            margin-top: 5px;
+        }
+    </style>
+    <style id="nav-hider">
+        .img-holder {
+            background-image: none;
+        }
+
+        .head-container {
+            display: none;
+        }
+    </style>
+    <style id="loader">
+        @keyframes loading {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .loading {
+            position: relative !important;
+            background-color: #E2E2E2 !important;
+            overflow: hidden;
+        }
+
+        .loading::after {
+            display: block;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: translateX(-100%);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
+            animation: loading 1.5s infinite;
+        }
+    </style>
+    <link rel="stylesheet" href="../css/first-page.css">
+</head>
+<body>
+<div class="content-wrapper container hor-center">
+    <div class="content flex-container vert-top">
+        <div class="page-header container sp-between">
+            <div class="contacts">
+                <div class="em2-5 loading" id="hotel-name"></div>
+                <a class="address em1-5 loading" id="hotel-address"></a>
+                <a class="em1-5 loading" id="hotel-number"></a>
+            </div>
+            <div class="marks flex-container hor-center vert-top">
+                <div class="stars-container container" id="hotel-rank">
+                </div>
+                <div class="container sp-between vert-top border-bottom-1 border-black">
+                    <span class="mark-summary em2" id="hotel-rank-nums"></span>
+                    <span class="feedback-amount">(230 отзывов)</span>
+                </div>
+                <div class="curr-lang-wp container sp-between">
+                    <select class="">
+                        <option value="">RUB</option>
+                        <option value="">DOL</option>
+                    </select>
+                    <div>
+                        <span class="flag-holder"><img src="../images/flag-ru.svg" width="30"></span>
+                        <select class="">
+                            <option value="">RU</option>
+                            <option value="">EN</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="book-nav-bar container hor-center loading">
+            <div class="img-holder flex-container vert-center">
+                <div class="head-container flex-container vert-center sp-evenly head-first-stg">
+                    <div class="head-container-date flex-container">
+                        <div class="border-right-1 border-black head-block-padding" id="header-begin-date"></div>
+                        <div class="border-left-1 border-black head-block-padding" id="header-end-date"></div>
+                    </div>
+                    <div class="head-container-date flex-container head-block-padding head-container-date-len"
+                         id="days-amount"></div>
+                </div>
+                <div class="head-container flex-container vert-center hor-center head-second-stg"><a>Номера, цены</a></div>
+                <div class="head-container flex-container vert-center hor-center head-third-stg">Завершить
+                    бронирование
+                </div>
+            </div>
+        </div>
+        <div class="room-list flex-container hor-center">
+            <div class="widget-wrapper flex-container hor-center vert-center">
+                <div class="widget-inputs flex-container sp-between">
+                    <div class="widget-dates container sp-between">
+                        <div class="widget-date-begin">
+                            <span>Приезжаю</span>
+                            <input id="start-date" type="text" class="border-black border-2">
+                        </div>
+                        <div class="widget-date-end">
+                            <span>Уезжаю</span>
+                            <input id="end-date" type="text" class="border-black border-2">
+                        </div>
+                    </div>
+                    <div class="widget-details vert-center">
+                        <select class="border-black border-2" id="guests">
+                            <option value="">1 взрослый</option>
+                            <option value="dog">2 взрослых</option>
+                            <option value="dog">3 взрослых</option>
+                            <option value="dog">4 взрослых</option>
+                            <option value="dog">5 взрослых</option>
+                            <option value="dog">6 взрослых</option>
+                            <option value="dog">7 взрослых</option>
+                            <option value="dog">8 взрослых</option>
+                            <option value="dog">9 взрослых</option>
+                            <option value="dog">10 взрослых</option>
+                        </select>
+                        <select class="border-black border-2" id="children">
+                            <option value="">Без детей</option>
+                            <option value="">1 ребенок</option>
+                            <option value="">2 ребенка</option>
+                            <option value="">3 ребенка</option>
+                            <option value="">4 ребенка</option>
+                            <option value="">5 детей</option>
+                            <option value="">6 детей</option>
+                            <option value="">7 детей</option>
+                            <option value="">8 детей</option>
+                            <option value="">9 детей</option>
+                            <option value="">10 детей</option>
+                        </select>
+                        <div class="widget-organs vert-center">
+                            <label>
+                                <input type="checkbox">
+                                показать опции для организаций
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="widget-submission flex-container vert-center">
+                    <div class="widget-subm-info">
+                        <span>Прямое бронирование в отеле.</span>
+                        <span class="widget-subm-info-ex">?</span> <br>
+                        <span>Гарантируем лучшую стоимость.</span>
+                    </div>
+                    <div class="widget-subm-button">
+                        <div class="flex-container hor-center"><a target="_self">Проверить цены</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

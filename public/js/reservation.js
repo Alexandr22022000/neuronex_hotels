@@ -46,17 +46,20 @@ const updateStatus = (status) => {
         if (document.isNarrow) {
             featSum = document.querySelector('.room-feat-feat');
             featSum.classList.add('flex-container');
-            featSum.classList.add('hor-center');
+            featSum.classList.add('vert-center');
             document.querySelector('.pay-sum').setAttribute('style', 'display: none!important')
         }
         else {
             featSum = document.querySelector('.room-feat-sum');
             featSum.classList.remove('sp-between');
-            featSum.classList.add('hor-center');
+            featSum.classList.add('vert-center');
         }
 
-        featSum.innerHTML = 'БРОНИРОВАНИЕ ОТМЕНЕНО';
-        featSum.setAttribute('style', 'background-color: #969696;color: #dcdcdc;')
+        featSum.innerHTML = `
+            <div style="text-align: center; margin-bottom: 10px">БРОНИРОВАНИЕ ОТМЕНЕНО</div> 
+            <div style="text-align: center; width: 60%"><a class="confirm-button" style="display: block" id="confirm-reserv" target="_self">Забронировать заново</a></div>
+        `;
+        featSum.setAttribute('style', 'background-color: #f74a4a; color: #fffdfd; flex-direction: column')
     }
 };
 
@@ -70,6 +73,11 @@ UI.setReservation = function(obj) {
         setPropertyValue(obj[el], el);
     });
     document.querySelector('.user-data-form').classList.remove('loading');
+};
+
+UI.setLink = function (link) {
+    let el = document.getElementById('confirm-reserv');
+    if (el) el.href = link;
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -141,7 +149,7 @@ const setDesktopVersion = () => {
                             <div id="phone" class="form-input"></div>
                         </div>
                     </div>
-                    <div class="input-block marged-bottom">
+                    <div class="input-block-wide marged-bottom">
                         <div class="wide-wrapper">
                             <label for="wishes" class="form-label">
                                 Ваши пожелания:
