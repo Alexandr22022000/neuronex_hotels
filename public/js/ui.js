@@ -72,5 +72,9 @@ let UI = {
     removeHider: function (hiderId) {
         let hider = document.getElementById(hiderId);
         if (hider) hider.remove();
+    },
+
+    addOnLoadListener: listener => {
+        document.addEventListener("DOMContentLoaded", listener);
     }
 };
