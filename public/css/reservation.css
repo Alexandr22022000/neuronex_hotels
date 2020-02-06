@@ -38,7 +38,7 @@
 @media (min-width: 768px) {
     .input-block {
         width: 50%;
-        height: 80px;
+        flex-grow: 1;
     }
     .user-data-col1 {
         width: 60%;
@@ -56,6 +56,13 @@
     }
     .book-nav-bar {
         height: 30px;
+    }
+    .input-block-wide {
+        width: 50%;
+        flex-grow: 4;
+    }
+    .wide-wrapper {
+        border: none;
     }
 }
 

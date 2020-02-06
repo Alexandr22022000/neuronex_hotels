@@ -225,7 +225,6 @@ textarea::-webkit-resizer {
     }
     .user-data-form {
         margin-top: 20px;
-        height: 32vh;
         padding: 10px;
         width: calc(93% - 20px);
     }
@@ -277,11 +276,11 @@ textarea::-webkit-resizer {
         border-color: #fefdeb;
         border-bottom: #fefdeb solid 2px;
         border-top: #fefdeb solid 2px;
-        height: 60%;
+        flex-grow: 4;
         width: 80%;
     }
     .wide-button-wrapper {
-        height: 42%;
+        flex-grow: 4;
         width: 80%;
     }
     #notes {
@@ -295,7 +294,7 @@ textarea::-webkit-resizer {
     .simple-wrapper {
         background-color: unset;
         padding: unset;
-        height: 25%;
+        flex-grow: 1;
         width: 80%;
         border-radius: unset;
     }
