@@ -17,7 +17,7 @@ Everywhere:
 Widget and dates step:
 #### `UI.onUpdateDate = (value, key) => {}`
 #### `UI.setLink(link)`
-#### `UI.setGuests({humans, children)`
+#### `UI.setGuests(humans, children)`
 
 Apartments step:
 #### `UI.setApartments([{name, description, images[], price, salePrice, link}], nights)`
