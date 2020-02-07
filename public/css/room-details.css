@@ -119,6 +119,7 @@ textarea::-webkit-resizer {
     transition: 0.3s;
     text-decoration: none;
     text-align: center;
+    cursor: pointer;
 }
 
 .confirm-button:hover {
@@ -127,10 +128,6 @@ textarea::-webkit-resizer {
 
 .confirm-button:active {
     background-color: #00527f;
-}
-
-.marged-bottom {
-    margin-bottom: 15px;
 }
 
 .input-block {
@@ -172,6 +169,7 @@ textarea::-webkit-resizer {
     .room-card-header {
         height: unset;
         padding: unset;
+        flex-grow: unset;
     }
     .order-data {
         flex-direction: column;

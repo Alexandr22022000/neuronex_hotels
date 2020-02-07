@@ -15,25 +15,23 @@ let lastDays = 1;
 
 UI.setApartments = function (apartments, nights) {
     UI.removeHider('card-hider');
-    if (apartments === null) return addWarnNoApartsMessage();
     lastApartments = apartments;
     lastDays = nights;
+    if (apartments.length === 0) return addWarnNoApartsMessage();
     addRoomList(apartments, nights);
 };
 
 document.addEventListener('DOMContentLoaded', () => {
     document.isNarrow = document.body.clientWidth < 768;
 
-    document.querySelector('.dates-link').href = `${window.location.origin}/${window.location.search}`;
+    document.querySelector('.back-button').href = `${window.location.origin}/${window.location.search}`;
+
+    updateNavBarLinks();
 
     window.addEventListener('resize', () => {
         if (!document.isNarrow && document.body.clientWidth < 768 || document.isNarrow && document.body.clientWidth >= 768) {
             document.isNarrow = document.body.clientWidth < 768;
-            let roomList = document.querySelector('.room-scroller');
-            roomList.innerHTML = '';
-            lastApartments.forEach((el) => {
-                roomList.appendChild(createRoomCard(el, lastDays))
-            });
+            if (lastApartments.length) UI.setApartments(lastApartments, lastDays);
         }
     });
 });
@@ -43,14 +41,18 @@ const addWarnNoApartsMessage = () => {
     roomList.innerHTML = `
         <div class="warn-no-aparts border-black border-bottom-1 flex-container sp-evenly vert-center">
             <span>На ваши даты свободных номеров нет</span>
-            <a class="chose-dates-warn unselecatble" target="_self">Выбрать другие даты</a>
+            <a class="chose-dates-warn unselectable" target="_self">Выбрать другие даты</a>
         </div>
     `;
 };
 
-QUERY.onQueryUpdate = () => {
+const updateNavBarLinks = () => {
+    document.querySelector('.dates-link').href = `${window.location.origin}/${window.location.search}`;
+};
 
-}
+QUERY.onQueryUpdate = () => {
+    updateNavBarLinks()
+};
 
 const addRoomList  = (rooms, nights) => {
     let roomList = document.querySelector('.room-scroller');
@@ -85,6 +87,7 @@ const createRoomCardLarge = (data, days) => {
 
     let cardDataElem = document.createElement('div');
     cardDataElem.classList.add('room-card-data');
+    cardDataElem.classList.add('flex-container');
 
     cardDataElem.appendChild(createHeaderBlock(data));
     cardDataElem.appendChild(createBodyBlock(data));
@@ -110,6 +113,7 @@ const createCardElem = () => {
 const createImageBlock = (data) => {
     let imgHoldElem = document.createElement('div');
     imgHoldElem.classList.add('room-card-img-hl');
+    imgHoldElem.classList.add('marged-bottom');
     imgHoldElem.classList.add('flex-container');
     imgHoldElem.classList.add('vert-center');
     if (document.isNarrow)
@@ -177,6 +181,7 @@ const createBodyBlock = (data) => {
         let expanded = false;
         let expandButton = document.createElement('div');
         expandButton.classList.add('card-body-expander');
+        expandButton.classList.add('unselectable');
         expandButton.innerText = 'Подробное описание...';
         expandButton.addEventListener('click', () => {
             if (!expanded) {
@@ -236,8 +241,9 @@ const createPriceBlock = (data, days) => {
     cardButtonWp.classList.add('room-card-price-button');
     cardButtonWp.href = data.link;
 
-    let cardButton = document.createElement('button');
+    let cardButton = document.createElement('div');
     cardButton.classList.add('green-button-price');
+    cardButton.classList.add('unselectable');
     cardButton.innerText = 'Выбрать';
 
     cardButtonWp.appendChild(cardButton);

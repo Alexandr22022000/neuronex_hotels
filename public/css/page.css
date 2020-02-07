@@ -47,7 +47,6 @@ body {
 }
 
 .img-holder {
-    background-image: url(../images/solo-bar-1.svg);
     background-size: 100% 100%;
     height: 50px;
     width: 93%;
@@ -59,9 +58,11 @@ body {
 }
 
 .head-first-stg {
-    width: 100%;
+    background-size: 100% 100%;
+    flex-grow: 1;
     height: 50px;
     font-size: 0.8em;
+    background-image: url(../images/solo-bar-1.svg);
 }
 
 .head-container {
@@ -90,8 +91,7 @@ body {
     outline: none;
     background-color: #369f40;
     color: #ffffff;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px;
     transition: 0.3s;
     font-size: 1.2em;
     cursor: pointer;
@@ -164,6 +164,8 @@ body {
 }
 .room-card-price-button {
     padding-left: 5px;
+    text-decoration: none;
+    display: block;
 }
 .card-body-expander {
     border: none;
@@ -244,6 +246,12 @@ body {
 
 /*Средние девайсы («таблетки», >= 768px)*/
 @media (min-width: 768px) {
+    .back-button {
+        display: none;
+    }
+    .carousel-wp {
+
+    }
     .warn-no-aparts {
         height: 120px;
         font-size: 2em;
@@ -263,6 +271,7 @@ body {
         display: flex;
     }
     .img-holder {
+        flex-wrap: nowrap;
         background-image: url(../images/bar.svg);
     }
     .head-container-date-len {
@@ -276,11 +285,13 @@ body {
         width: calc(100% / 3);
     }
     .head-first-stg {
+        background-image: none;
+        background-size: 0 0;
         height: 30px;
         font-size: 0.8em;
     }
     .room-card {
-        height: 280px;
+
     }
     .room-card-img {
         background-color: aquamarine;
@@ -293,18 +304,22 @@ body {
     }
     .room-card-data {
         width: calc(100% - 390px);
-        height: 250px;
+        height: unset;
     }
     .room-card-header {
-        height: 25%;
         font-size: 2em;
+        flex-grow: 2;
+        padding: 0px;
     }
     .room-card-body {
         font-size: 1.3em;
+        flex-grow: 5;
     }
     .room-card-price-hl {
-        height: 30%;
         flex-direction: row;
+        padding: 0px;
+        flex-grow: 1;
+        height: unset;
     }
     .room-card-price {
         width: -moz-fit-content;
@@ -332,7 +347,7 @@ body {
         font-size: 2em;
     }
     .room-card-price-button {
-        padding-left: 5px;
+
     }
 }
 

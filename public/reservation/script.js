@@ -1,8 +1,38 @@
-document.addEventListener("DOMContentLoaded", () => {
-    UI.setHotel({name: "A Kvartal", phone: "88005553535", address: "Prague, Apple street 12", rank: 9.5});
-    UI.setDates({start: new Date(), end: new Date(Date.now() + 2*24*60*60*1000), nights: 2});
-    UI.setApartment({name: "Premium apartment", price: 1400, salePrice: 2000, images: ['https://redevelopmentconstruction.com/wp-content/uploads/2017/11/home-slider-construction-WordPress-theme-apt-on-sale-1.jpg', 'https://im.proptiger.com/1/1584451/6/empire-elevation-11178767.jpeg'], link:'/premium', description: "This is description!"}, 2);
-    UI.setReservation({name: "Alex", phone: "88005553535", email: "info@neuronex.pro", wishes: "", status: 'ADDED', humans: 2, children: 0});
+UI.addOnLoadListener(() => {
+    const params = QUERY.params();
+
+    if (!params.token)
+        return window.location.replace('/?hotel=' + params.hotel);
+
+    CORE.getHotel(params);
+
+    AJAX.get('/api/reservation', {token: params.token}).then(res => {
+        const startText = res.start,
+            endText = res.end;
+
+        res.start = CORE.parseDate(res.start);
+        res.end = CORE.parseDate(res.end);
+        res.nights = CORE.getNights(res.start, res.end);
+
+        res.apartment.start = res.start;
+        res.apartment.end = res.end;
+
+        UI.setDates(res);
+        UI.setApartment(res.apartment, res.nights);
+        UI.setReservation(res);
+        UI.setLink('/?hotel=' + params.hotel + '&start=' + startText + '&end=' + endText + '&guests=' + res.humans + '&children=' + res.children);
+    });
 });
 
-UI.onCancelReservation = () => console.log("AAAA");
+let showPreloader = false;
+
+UI.onCancelReservation = () => {
+    if (!confirm("Вы уверены, что хотите отменить бронирование?")) return;
+    if (showPreloader) return;
+
+    showPreloader = true;
+    const params = QUERY.params();
+    AJAX.post('/api/reservation/cancel', {token: params.token}).then(res => {
+        window.location.reload(true);
+    });
+};

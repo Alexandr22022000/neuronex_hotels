@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.isNarrow = document.body.clientWidth < 768;
-    document.querySelector('.dates-link').href = `${window.location.origin}/firstpage${window.location.search}`;
+    document.querySelector('.dates-link').href = `${window.location.origin}/${window.location.search}`;
     document.querySelector('.head-second-stg a').href = `${window.location.origin}/apartments${window.location.search}`;
     document.querySelector('.back-button').href = `${window.location.origin}/apartments${window.location.search}`;
     setContent();
@@ -10,7 +10,6 @@ UI.setApartment = function (obj) {
     if (obj === undefined) return;
     if (obj === null) return;
     this.removeHider('apart-hider');
-    this.removeHider('user-data-hider');
     document.querySelector('.order-data').classList.remove('loading');
     document.querySelector('.room-details').classList.remove('loading');
     document.querySelector('.room-feat-sum').classList.remove('loading');
@@ -88,7 +87,7 @@ const addEventListeners = () => {
 const setContent = () => {
     setTimeout(() => {
         document.getElementById('confirm-button').addEventListener('click', () => {
-            if (UI.onFisishReservation) UI.onFisishReservation();
+            if (UI.onFinishReservation) UI.onFinishReservation();
         });
         addEventListeners();
     }, 1);
@@ -108,8 +107,8 @@ const setDesktopVersion = () => {
                         <div class="order-dates" id="order-dates">
                         </div>
                         <div class="order-time flex-container hor-right">
-                            <div class="start-time">с 12.00</div>
-                            <div class="end-time">до 12.00</div>
+                            <div class="start-time">с: 12.00</div>
+                            <div class="end-time">до: 12.00</div>
                         </div>
                     </div>
                     <div class="order-checks-taxi">
@@ -158,13 +157,13 @@ const setDesktopVersion = () => {
                     </div>
                 </div>
                 <div class="user-data-col flex-container sp-evenly" >
-                    <div class="simple-wrapper">
+                    <div class="simple-wrapper marged-bottom">
                         <label for="phone" class="form-label">
                             Телефон <span style="color: #de1424">*</span>
                         </label>
                         <input id="phone" type="tel" class="form-input">
                     </div>
-                    <div class="simple-wrapper">
+                    <div class="simple-wrapper marged-bottom">
                         <label for="email" class="form-label">
                             @ Электронная почта
                         </label>
@@ -173,7 +172,7 @@ const setDesktopVersion = () => {
                     </div>
                     <div class="wide-button-wrapper flex-container hor-right confirm-wrapper">
                         <span style="font-size: 0.7em; font-style: italic">Вы сможете редактировать бронирование бесплатно</span>
-                        <a target="_self" class="confirm-button unselecatble" id="confirm-button" href="${window.location.origin}/reservation${window.location.search}">Завершить бронирование!</a>
+                        <a target="_self" class="confirm-button unselectable" id="confirm-button">Завершить бронирование!</a>
                     </div>
                 </div>
             </div>
@@ -215,7 +214,7 @@ const setMobileVersion = () => {
             </div>
         </div>
     </div>
-    <div class="room-details flex-container hor-left user-data-form loading">
+    <div class="room-details flex-container hor-left user-data-form">
         <div class="input-block marged-bottom">
             <div class="simple-wrapper flex-container">
                 <div class="form-label flex-container vert-center">
@@ -250,7 +249,7 @@ const setMobileVersion = () => {
             </div>
         </div>
         <div class="container confirm-wrapper">
-            <a target="_self" class="confirm-button" id="confirm-button" href="${window.location.origin}/reservation${window.location.search}">Завершить бронирование!</a>
+            <a target="_self" class="confirm-button unselectable" id="confirm-button">Завершить бронирование!</a>
             <span style="font-size: 0.7em; font-style: italic">Вы сможете редактировать бронирование бесплатно</span>
         </div>
     </div>`

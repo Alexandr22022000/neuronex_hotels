@@ -146,10 +146,14 @@
     right: 5px !important;
 }
 
-.unselecatble {
+.unselectable {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+}
+
+.marged-bottom {
+    margin-bottom: 15px;
 }

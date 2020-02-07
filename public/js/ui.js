@@ -1,7 +1,7 @@
 let UI = {
     daysArr: ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'],
     monthArr: ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'],
-    dateObject: null,
+
     setHotel: function (hotelObj) {
         this.removeHider('hotel-hider');
         let name = document.getElementById('hotel-name');
@@ -17,7 +17,7 @@ let UI = {
         phone.innerText = hotelObj.phone;
         phone.href = `phoneto:${hotelObj.phone}`;
         rankNum.innerText = hotelObj.rank;
-        if (hotelObj.reviews) reviews.innerText = hotelObj.reviews;
+        if (hotelObj.reviews) reviews.innerText = `(${hotelObj.reviews} отзывов)`;
 
         name.classList.remove('loading');
         address.classList.remove('loading');
@@ -38,7 +38,6 @@ let UI = {
     },
 
     setDates: function (datesObj)  {
-        this.dateObject = datesObj;
         let startDate = document.getElementById('begin-date');
         let endDate = document.getElementById('end-date');
         let daysAmount = document.getElementById('days-amount');
