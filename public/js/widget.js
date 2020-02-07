@@ -41,6 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (UI.onUpdateDate) UI.onUpdateDate(new Date(e.target.value), 'end');
         })
     }
+
+    if (document.isNarrow) {
+        document.getElementById('children').addEventListener('change', function(e) {
+            if (UI.onUpdateGuests) UI.onUpdateGuests(e.target.selectedIndex, 'children');
+        });
+        document.getElementById('guests').addEventListener('change', function(e) {
+            if (UI.onUpdateGuests) UI.onUpdateGuests(e.target.selectedIndex, 'guests');
+        });
+    }
 });
 
 UI.setDates = function (datesObj) {

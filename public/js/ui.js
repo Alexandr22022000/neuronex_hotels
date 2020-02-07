@@ -1,7 +1,7 @@
 let UI = {
     daysArr: ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'],
     monthArr: ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'],
-
+    datesObj: null,
     setHotel: function (hotelObj) {
         this.removeHider('hotel-hider');
         let name = document.getElementById('hotel-name');
@@ -38,6 +38,7 @@ let UI = {
     },
 
     setDates: function (datesObj)  {
+        this.datesObj = datesObj;
         let startDate = document.getElementById('begin-date');
         let endDate = document.getElementById('end-date');
         let daysAmount = document.getElementById('days-amount');
@@ -49,6 +50,7 @@ let UI = {
         startDate.innerText = this.formatDate(datesObj.start);
         endDate.innerText = this.formatDate(datesObj.end);
         daysAmount.innerText = this.formatDays(datesObj.nights);
+        if (this.onHeaderDateSet) this.onHeaderDateSet(datesObj);
     },
 
     formatDate: function (date) {

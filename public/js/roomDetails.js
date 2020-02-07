@@ -13,22 +13,28 @@ UI.setApartment = function (obj) {
     document.querySelector('.order-data').classList.remove('loading');
     document.querySelector('.room-details').classList.remove('loading');
     document.querySelector('.room-feat-sum').classList.remove('loading');
-    document.querySelector('.user-data-form').classList.remove('loading');
 
-    let {name, description, images, price, salePrice} = obj;
+    let {name, images, salePrice} = obj;
     document.getElementById('room-name').innerText = name;
-    document.getElementById('summary-price').innerText = salePrice + ' ₽';
-    let dateStart = this.dateObject.start;
-    let dateEnd = this.dateObject.end;
-    document.getElementById('order-dates').innerHTML =
-        `Заезд - ${dateStart.getDate()} ${this.monthArr[dateStart.getMonth()]} ${dateStart.getFullYear()} г <br>` +
-        `Выезд - ${dateEnd.getDate()} ${this.monthArr[dateEnd.getMonth()]} ${dateEnd.getFullYear()} г`;
+    document.getElementById('summary-price').innerText = this.formatNumber(salePrice) + ' ₽';
+
+    if (this.datesObj) setDatesToApartmentData(this.datesObj);
 
     let carousel = document.querySelector('.carousel-wp');
     carousel.classList.remove('loading');
     carousel.innerHTML = '';
     carousel.appendChild(createCarouselBlock({images}));
 };
+
+const setDatesToApartmentData = (datesObj) => {
+    let dateStart = datesObj.start;
+    let dateEnd = datesObj.end;
+    document.getElementById('order-dates').innerHTML =
+        `Заезд - ${dateStart.getDate()} ${UI.monthArr[dateStart.getMonth()]} ${dateStart.getFullYear()} г <br>` +
+        `Выезд - ${dateEnd.getDate()} ${UI.monthArr[dateEnd.getMonth()]} ${dateEnd.getFullYear()} г`;
+};
+
+UI.onHeaderDateSet = (datesObj) => setDatesToApartmentData(datesObj);
 
 UI.setError = function (errObj) {
     Object.keys(errObj).forEach((el) => {
@@ -130,7 +136,7 @@ const setDesktopVersion = () => {
                     <span class="py-sum-sum" id="summary-price"></span>
                 </div>
             </div>
-    <div class="room-details flex-container user-data-form loading">
+    <div class="room-details flex-container user-data-form">
                 <div class="user-data-col flex-container sp-between form-info">
                     <div class="form-info-instr">
                         Почти готово! Просто заполните <br>

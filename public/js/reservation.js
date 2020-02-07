@@ -9,17 +9,24 @@ UI.setApartment = function (obj) {
     let {name, description, images, price, salePrice} = obj;
     document.getElementById('room-name').innerText = name;
     document.getElementById('summary-price').innerText = this.formatNumber(salePrice) + ' ₽';
-    let dateStart = this.dateObject.start; //FIXME !!!!
-    let dateEnd = this.dateObject.end;
-    document.getElementById('order-dates').innerHTML =
-        `Заезд - ${dateStart.getDate()} ${this.monthArr[dateStart.getMonth()]} ${dateStart.getFullYear()} г <br>` +
-        `Выезд - ${dateEnd.getDate()} ${this.monthArr[dateEnd.getMonth()]} ${dateEnd.getFullYear()} г`;
+
+    if (this.datesObj) setDatesToApartmentData(this.datesObj);
 
     let carousel = document.querySelector('.carousel-wp');
     carousel.classList.remove('loading');
     carousel.innerHTML = '';
     carousel.appendChild(createCarouselBlock({images}));
 };
+
+const setDatesToApartmentData = (datesObj) => {
+    let dateStart = datesObj.start;
+    let dateEnd = datesObj.end;
+    document.getElementById('order-dates').innerHTML =
+        `Заезд - ${dateStart.getDate()} ${UI.monthArr[dateStart.getMonth()]} ${dateStart.getFullYear()} г <br>` +
+        `Выезд - ${dateEnd.getDate()} ${UI.monthArr[dateEnd.getMonth()]} ${dateEnd.getFullYear()} г`;
+};
+
+UI.onHeaderDateSet = (datesObj) => setDatesToApartmentData(datesObj);
 
 const setPropertyValue = (value, propId) => {
     let elem = document.getElementById(propId);
@@ -57,7 +64,7 @@ const updateStatus = (status) => {
 
         featSum.innerHTML = `
             <div style="text-align: center; margin-bottom: 10px">БРОНИРОВАНИЕ ОТМЕНЕНО</div> 
-            <div style="text-align: center; width: 60%"><a class="confirm-button" style="display: block" id="confirm-reserv" target="_self">Забронировать заново</a></div>
+            <div style="text-align: center; width: 60%"><a class="confirm-button unselectable" style="display: block" id="confirm-reserv" target="_self">Забронировать заново</a></div>
         `;
         featSum.setAttribute('style', 'background-color: #f74a4a; color: #fffdfd; flex-direction: column')
     }
@@ -68,10 +75,15 @@ UI.setReservation = function(obj) {
     if (obj === null) return;
     this.removeHider('user-data-hider');
 
-    Object.keys(obj).forEach((el) => {
-        if (el === 'status') return updateStatus(obj[el]);
-        setPropertyValue(obj[el], el);
-    });
+    setPropertyValue(obj.name, 'name');
+    setPropertyValue(obj.phone, 'phone');
+    setPropertyValue(obj.email, 'email');
+    setPropertyValue(obj.wishes, 'wishes');
+    setPropertyValue(obj.humans, 'humans');
+    setPropertyValue(obj.children, 'children');
+
+    updateStatus(obj.status);
+
     document.querySelector('.user-data-form').classList.remove('loading');
 };
 
@@ -184,7 +196,7 @@ const setDesktopVersion = () => {
                 </div>
                 
                 <div class="user-data-col flex-container hor-center vert-center">
-                    <div class="flex-container hor-right confirm-wrapper">
+                    <div class="flex-container hor-right confirm-wrapper unselectable">
                         <button class="deny-button" id="deny-button">Отменить бронирование</button>
                     </div>
                 </div>
@@ -264,7 +276,7 @@ const setMobileVersion = () => {
             </div>
             <div id="children" class="form-input table-cell"></div>
         </div>
-        <div class="container confirm-wrapper">
+        <div class="container confirm-wrapper unselectable">
             <button class="deny-button" id="deny-button">Отменить бронирование</button>
         </div>
     </div>`
