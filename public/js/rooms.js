@@ -23,7 +23,7 @@ UI.setApartments = function (apartments, nights) {
 document.addEventListener('DOMContentLoaded', () => {
     document.isNarrow = document.body.clientWidth < 768;
 
-    document.querySelector('.dates-link').href = `${window.location.origin}/firstpage${window.location.search}`;
+    document.querySelector('.dates-link').href = `${window.location.origin}/${window.location.search}`;
 
     window.addEventListener('resize', () => {
         if (!document.isNarrow && document.body.clientWidth < 768 || document.isNarrow && document.body.clientWidth >= 768) {
@@ -219,7 +219,7 @@ const createPriceBlock = (data, days) => {
 
     let cardButtonWp = document.createElement('a');
     cardButtonWp.classList.add('room-card-price-button');
-    cardButtonWp.href = data.link + window.location.search;
+    cardButtonWp.href = data.link;
 
     let cardButton = document.createElement('button');
     cardButton.classList.add('green-button-price');

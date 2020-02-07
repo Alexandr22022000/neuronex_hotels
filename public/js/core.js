@@ -70,10 +70,9 @@ const CORE = {
     getHotel: params => {
         if (!params.hotel) return alert("Отель не найден! Попробуйте перейти на сайт отеля и забронировать заново");
 
-        console.log(params.hotel);
         AJAX.get('/api/hotel', {hotel: params.hotel}).then(res => {
             res.rank = 10;
-            res.reviesw = 27;
+            res.reviews = 27;
             UI.setHotel(res);
         });
     },

@@ -11,7 +11,7 @@ if value === undefined, remove param
 
 ### UI
 Everywhere:
-#### `UI.setHotel({name, address, phone, rank, reviesw})`
+#### `UI.setHotel({name, address, phone, rank, reviews})`
 #### `UI.setDates({start<Date>, end<Date>, nights<Number>})`
 
 Widget and dates step:

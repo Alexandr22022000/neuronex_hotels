@@ -1,3 +1,3 @@
 module.exports = (price, nights, apartment) => {
-    return price * nights;
+    return price * nights - 100;
 };
