@@ -31,5 +31,6 @@ let QUERY = {
     set: (keyval) => {
         const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + QUERY.appendQuery(keyval);
         window.history.replaceState(null, null, newUrl);
+        if (QUERY.onQueryUpdate) QUERY.onQueryUpdate();
     },
 };

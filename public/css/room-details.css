@@ -269,6 +269,7 @@ textarea::-webkit-resizer {
         width: calc(100% - 10px);
         resize: vertical;
         height: 80%;
+        outline: none;
     }
     .wide-wrapper {
         padding-top: 10px;

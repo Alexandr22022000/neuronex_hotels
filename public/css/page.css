@@ -186,7 +186,34 @@ body {
     height: 100%;
 }
 
+.warn-no-aparts {
+    height: 100px;
+    font-style: italic;
+    color: gray;
+    flex-direction: column;
+}
 
+.chose-dates-warn {
+    display: block;
+    align-self: center;
+    text-align: center;
+    font-style: initial;
+    border-radius: 5px;
+    background-color: #0095d9;
+    color: white;
+    padding: 5px;
+    outline: none;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.chose-dates-warn:hover {
+    background-color: #0067a1;
+}
+.chose-dates-warn:active {
+    background-color: #00406c;
+}
 
 /*Малые девайсы («ландшафтные телефоны», >= 576px)*/
 @media (min-width: 576px) {
@@ -217,6 +244,12 @@ body {
 
 /*Средние девайсы («таблетки», >= 768px)*/
 @media (min-width: 768px) {
+    .warn-no-aparts {
+        height: 120px;
+        font-size: 2em;
+        font-style: italic;
+        color: gray;
+    }
     .carousel-cell {
         max-height: 250px;
     }
@@ -232,11 +265,9 @@ body {
     .img-holder {
         background-image: url(../images/bar.svg);
     }
-
     .head-container-date-len {
         display: none;
     }
-
     .head-third-stg,
     .head-second-stg {
         display: flex;

@@ -20,7 +20,7 @@ const createCarouselBlock = (data) => {
     carouselElem.prepend(elemsList);
 
     setTimeout(() => {
-        new Glider(elemsList, {
+        let glider = new Glider(elemsList, {
             slidesToScroll: 1,
             slidesToShow: 0.9,
             draggable: true,
@@ -31,7 +31,7 @@ const createCarouselBlock = (data) => {
                 prev: '.glider-prev',
                 next: '.glider-next'
             }
-        })
+        });
     }, 1);
 
 

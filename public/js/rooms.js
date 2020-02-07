@@ -14,10 +14,11 @@ let lastApartments = [];
 let lastDays = 1;
 
 UI.setApartments = function (apartments, nights) {
+    UI.removeHider('card-hider');
+    if (apartments === null) return addWarnNoApartsMessage();
     lastApartments = apartments;
     lastDays = nights;
     addRoomList(apartments, nights);
-    UI.removeHider('card-hider');
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -36,6 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+const addWarnNoApartsMessage = () => {
+    let roomList = document.querySelector('.room-scroller');
+    roomList.innerHTML = `
+        <div class="warn-no-aparts border-black border-bottom-1 flex-container sp-evenly vert-center">
+            <span>На ваши даты свободных номеров нет</span>
+            <a class="chose-dates-warn unselecatble" target="_self">Выбрать другие даты</a>
+        </div>
+    `;
+};
+
+QUERY.onQueryUpdate = () => {
+
+}
 
 const addRoomList  = (rooms, nights) => {
     let roomList = document.querySelector('.room-scroller');

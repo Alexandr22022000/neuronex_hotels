@@ -9,6 +9,7 @@ let UI = {
         let phone = document.getElementById('hotel-number');
         let rank = document.getElementById('hotel-rank');
         let rankNum = document.getElementById('hotel-rank-nums');
+        let reviews = document.getElementById('reviews');
 
         if (!name || !address || !phone || !rank || !rankNum) return;
         name.innerText = hotelObj.name;
@@ -16,6 +17,7 @@ let UI = {
         phone.innerText = hotelObj.phone;
         phone.href = `phoneto:${hotelObj.phone}`;
         rankNum.innerText = hotelObj.rank;
+        if (hotelObj.reviews) reviews.innerText = hotelObj.reviews;
 
         name.classList.remove('loading');
         address.classList.remove('loading');

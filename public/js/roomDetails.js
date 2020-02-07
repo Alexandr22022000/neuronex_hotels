@@ -38,20 +38,27 @@ UI.setError = function (errObj) {
             removeError(targetInput);
             return;
         }
-        let elem = document.createElement('div');
-        elem.style.color = 'red';
-        elem.classList.add('error-in-msg');
-        elem.innerText = errObj[el];
+
         if (document.isNarrow) {
-            targetInput.parentNode.parentNode.appendChild(elem);
+            if (targetInput.parentNode.parentNode.querySelector('.error-in-msg')) return;
+            targetInput.parentNode.parentNode.appendChild(createErrorElem(errObj[el]));
             targetInput.parentNode.setAttribute('style', 'border: red solid 1px;');
         }
         else {
+            if (targetInput.parentNode.querySelector('.error-in-msg')) return;
             targetInput.setAttribute('style', 'border: red solid 1px;');
-            targetInput.parentNode.appendChild(elem);
+            targetInput.parentNode.appendChild(createErrorElem(errObj[el]));
         }
     })
 
+};
+
+const createErrorElem = (text) => {
+    let elem = document.createElement('div');
+    elem.style.color = 'red';
+    elem.classList.add('error-in-msg');
+    elem.innerText = text;
+    return elem;
 };
 
 const removeError = (targetInput) => {
@@ -166,7 +173,7 @@ const setDesktopVersion = () => {
                     </div>
                     <div class="wide-button-wrapper flex-container hor-right confirm-wrapper">
                         <span style="font-size: 0.7em; font-style: italic">Вы сможете редактировать бронирование бесплатно</span>
-                        <a target="_self" class="confirm-button" id="confirm-button" href="${window.location.origin}/reservation${window.location.search}">Завершить бронирование!</a>
+                        <a target="_self" class="confirm-button unselecatble" id="confirm-button" href="${window.location.origin}/reservation${window.location.search}">Завершить бронирование!</a>
                     </div>
                 </div>
             </div>

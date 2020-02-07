@@ -46,8 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+QUERY.onQueryUpdate = () => {
+    updateSecondStepHref();
+};
+
 const updateSecondStepHref = () => {
     document.querySelector('.widget-subm-button a').href = `${window.location.origin}/apartments${window.location.search}`;
+    document.querySelector('.head-second-stg a').href = `${window.location.origin}/apartments${window.location.search}`;
 };
 
 UI.setDates = function (datesObj) {
@@ -82,12 +87,8 @@ const updateHeadersDates = (beginDate, endDate, days) => {
 };
 
 UI.setGuests = function (humans, children) {
-    if (children > 1) {
-        document.getElementById('children').selectedIndex = children;
-    }
-    if (humans) {
-        document.getElementById('guests').selectedIndex = humans - 1;
-    }
+    document.getElementById('children').selectedIndex = children ? children : 0;
+    document.getElementById('guests').selectedIndex = humans ? humans - 1 : 0;
 };
 
 UI.setLink = function (link) {

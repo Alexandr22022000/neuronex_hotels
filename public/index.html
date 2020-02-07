@@ -77,6 +77,7 @@
         }
     </style>
     <link rel="stylesheet" href="./css/first-page.css">
+    <link rel="stylesheet" href="../css/marks.css">
 </head>
 <body>
 <div class="content-wrapper container hor-center">
@@ -92,7 +93,7 @@
                 </div>
                 <div class="container sp-between vert-top border-bottom-1 border-black">
                     <span class="mark-summary em2" id="hotel-rank-nums"></span>
-                    <span class="feedback-amount">(230 отзывов)</span>
+                    <span class="feedback-amount" id="reviews"></span>
                 </div>
                 <div class="curr-lang-wp container sp-between">
                     <select class="">
@@ -139,7 +140,7 @@
                         </div>
                     </div>
                     <div class="widget-details vert-center">
-                        <select class="border-black border-2">
+                        <select class="border-black border-2" id="guests">
                             <option value="">1 взрослый</option>
                             <option value="dog">2 взрослых</option>
                             <option value="dog">3 взрослых</option>
@@ -151,7 +152,7 @@
                             <option value="dog">9 взрослых</option>
                             <option value="dog">10 взрослых</option>
                         </select>
-                        <select class="border-black border-2">
+                        <select class="border-black border-2" id="children">
                             <option value="">Без детей</option>
                             <option value="">1 ребенок</option>
                             <option value="">2 ребенока</option>
