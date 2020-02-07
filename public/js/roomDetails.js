@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.isNarrow = document.body.clientWidth < 768;
-    document.querySelector('.dates-link').href = `${window.location.origin}/firstpage${window.location.search}`;
+    document.querySelector('.dates-link').href = `${window.location.origin}/${window.location.search}`;
     document.querySelector('.head-second-stg a').href = `${window.location.origin}/apartments${window.location.search}`;
     document.querySelector('.back-button').href = `${window.location.origin}/apartments${window.location.search}`;
     setContent();
@@ -81,7 +81,7 @@ const addEventListeners = () => {
 const setContent = () => {
     setTimeout(() => {
         document.getElementById('confirm-button').addEventListener('click', () => {
-            if (UI.onFisishReservation) UI.onFisishReservation();
+            if (UI.onFinishReservation) UI.onFinishReservation();
         });
         addEventListeners();
     }, 1);
@@ -166,7 +166,7 @@ const setDesktopVersion = () => {
                     </div>
                     <div class="wide-button-wrapper flex-container hor-right confirm-wrapper">
                         <span style="font-size: 0.7em; font-style: italic">Вы сможете редактировать бронирование бесплатно</span>
-                        <a target="_self" class="confirm-button" id="confirm-button" href="${window.location.origin}/reservation${window.location.search}">Завершить бронирование!</a>
+                        <a target="_self" class="confirm-button" id="confirm-button">Завершить бронирование!</a>
                     </div>
                 </div>
             </div>
@@ -243,7 +243,7 @@ const setMobileVersion = () => {
             </div>
         </div>
         <div class="container confirm-wrapper">
-            <a target="_self" class="confirm-button" id="confirm-button" href="${window.location.origin}/reservation${window.location.search}">Завершить бронирование!</a>
+            <a target="_self" class="confirm-button" id="confirm-button">Завершить бронирование!</a>
             <span style="font-size: 0.7em; font-style: italic">Вы сможете редактировать бронирование бесплатно</span>
         </div>
     </div>`

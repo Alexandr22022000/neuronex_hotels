@@ -22,5 +22,5 @@ UI.addOnLoadListener(() => {
     }).then(res => {
         res.apartments = res.apartments.map(apartment => ({...apartment, link: '/finish' + window.location.search + '&apartment=' + apartment.link}));
         UI.setApartments(res.apartments, dates.nights);
-    })
+    });
 });
