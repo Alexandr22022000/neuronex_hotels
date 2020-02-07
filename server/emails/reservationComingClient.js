@@ -3,7 +3,7 @@ const mailer = require('../mailer'),
     stringifyNights = require('../reservations/stringifyNights');
 
 module.exports = (email, reservation, apartment, hotel) => {
-    const link = `https://hotels.neuronex.pro/reservation/?reservation=${reservation.token}&hotel=${hotel.link}`;
+    const link = `https://hotels.neuronex.pro/reservation/?token=${reservation.token}&hotel=${hotel.link}`;
 
     const msg = `
         <div id="m_523038215181879073m_1065760783965050979content">

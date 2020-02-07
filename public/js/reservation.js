@@ -9,7 +9,7 @@ UI.setApartment = function (obj) {
     let {name, description, images, price, salePrice} = obj;
     document.getElementById('room-name').innerText = name;
     document.getElementById('summary-price').innerText = this.formatNumber(salePrice) + ' ₽';
-    let dateStart = this.dateObject.start;
+    let dateStart = this.dateObject.start; //FIXME !!!!
     let dateEnd = this.dateObject.end;
     document.getElementById('order-dates').innerHTML =
         `Заезд - ${dateStart.getDate()} ${this.monthArr[dateStart.getMonth()]} ${dateStart.getFullYear()} г <br>` +

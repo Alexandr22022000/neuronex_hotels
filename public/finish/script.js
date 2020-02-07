@@ -24,6 +24,8 @@ const reservation = {
     wishes: "",
 };
 
+let showPreloader = false;
+
 const validator = {
     name: value => {
         if (!value || !value.trim()) return "Введите имя";
@@ -50,6 +52,8 @@ UI.onUpdateInput = (value, key) => {
 };
 
 UI.onFinishReservation = () => {
+    if (showPreloader) return;
+
     const errors = {};
     let isError = false;
     for (let key in reservation) {
@@ -60,6 +64,7 @@ UI.onFinishReservation = () => {
     UI.setError(errors);
     if (isError) return;
 
+    showPreloader = true;
     const params = QUERY.params();
     AJAX.post('/api/reservation', {
         start: params.start,
@@ -69,6 +74,7 @@ UI.onFinishReservation = () => {
         apartment: params.apartment,
         ...reservation,
     }).then(res => {
-        window.location.replace('/reservation?token=' + res.token);
+        showPreloader = false;
+        window.location.replace('/reservation?token=' + res.token + '&hotel=' + params.hotel);
     });
 };
