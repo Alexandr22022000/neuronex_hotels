@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
             id: 1,
             minDate: new Date(),
             formatter: (input, date, instance) => {
-                input.value = date.toLocaleDateString(); // => '1/1/2099'
+                input.value = date.toLocaleDateString();
                 if (instance.isManualSet) {
                     instance.isManualSet = false;
                     return;
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         end = datepicker('#end-date', {
             id: 1,
             formatter: (input, date, instance) => {
-                input.value = date.toLocaleDateString(); // => '1/1/2099'
+                input.value = date.toLocaleDateString();
                 if (instance.isManualSet) {
                     instance.isManualSet = false;
                     return;

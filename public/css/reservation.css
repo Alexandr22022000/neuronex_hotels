@@ -27,6 +27,7 @@
     transition: 0.3s;
     text-decoration: none;
     text-align: center;
+    cursor: pointer;
 }
 .deny-button:hover {
     background-color: #767676;

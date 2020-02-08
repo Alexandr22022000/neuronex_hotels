@@ -50,6 +50,7 @@
 .widget-subm-button a {
     color: #ffffff;
     text-decoration: none;
+    text-align: center;
 }
 
 .widget-subm-info-ex {
@@ -177,7 +178,6 @@
     }
     .widget-subm-button a {
         width: 100%;
-        text-align: center;
     }
 }
 

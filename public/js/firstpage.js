@@ -65,8 +65,6 @@ const updateSecondStepHref = () => {
 };
 
 UI.setDates = function (datesObj) {
-    this.dateObject = datesObj;
-
     updateHeadersDates(datesObj.start, datesObj.end, datesObj.nights);
 
     if (isMobileCachedResult) {

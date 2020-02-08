@@ -63,7 +63,7 @@ const updateStatus = (status) => {
         }
 
         featSum.innerHTML = `
-            <div style="text-align: center; margin-bottom: 10px">БРОНИРОВАНИЕ ОТМЕНЕНО</div> 
+            <div style="text-align: center; margin-bottom: 10px">ВАШЕ БРОНИРОВАНИЕ ОТМЕНЕНО</div> 
             <div style="text-align: center; width: 60%"><a class="confirm-button unselectable" style="display: block" id="confirm-reserv" target="_self">Забронировать заново</a></div>
         `;
         featSum.setAttribute('style', 'background-color: #f74a4a; color: #fffdfd; flex-direction: column')

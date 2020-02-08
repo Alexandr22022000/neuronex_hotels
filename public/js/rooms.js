@@ -41,7 +41,7 @@ const addWarnNoApartsMessage = () => {
     roomList.innerHTML = `
         <div class="warn-no-aparts border-black border-bottom-1 flex-container sp-evenly vert-center">
             <span>На ваши даты свободных номеров нет</span>
-            <a class="chose-dates-warn unselectable" target="_self">Выбрать другие даты</a>
+            <a class="chose-dates-warn unselectable" target="_self" href="${location.origin + '/' + location.search}">Выбрать другие даты</a>
         </div>
     `;
 };
