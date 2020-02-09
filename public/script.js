@@ -12,6 +12,7 @@ UI.addOnLoadListener(() => {
 });
 
 UI.onUpdateDate = (value, key) => {
+    console.log({value,key})
     value = new Date(Date.UTC(value.getFullYear(), value.getMonth(), value.getDate(), 10, 0, 0));
     const params = QUERY.params();
     let dates = {

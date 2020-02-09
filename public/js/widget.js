@@ -1,31 +1,72 @@
 let start, end;
+let byUser = false;
+
+const getDayDate = (date) => {
+    let minDate;
+    if (!date) {
+        minDate = new Date();
+        minDate.setHours(0);
+        minDate.setMinutes(0);
+        minDate.setSeconds(0);
+        minDate.setMilliseconds(0);
+    }
+    else {
+        minDate = new Date(`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`)
+    }
+
+    return minDate
+};
+
+const toDaysArray = (beginDate, endDate) => {
+    let arr = [];
+    beginDate = getDayDate(beginDate);
+    endDate = getDayDate(endDate);
+    while (beginDate.getTime() <= endDate.getTime()) {
+        arr.push(getDayDate(beginDate));
+        beginDate.setTime(beginDate.getTime()+1000*60*60*24);
+    }
+    return arr;
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     document.isNarrow = document.body.clientWidth < 768;
 
+    let mindate = getDayDate();
     if (!isMobileOS()) {
-        start = datepicker('#start-date', {
-            id: 1,
-            minDate: new Date(),
-            formatter: (input, date, instance) => {
-                input.value = date.toLocaleDateString();
-                if (instance.isManualSet) {
-                    instance.isManualSet = false;
-                    return;
+        let startDateElem = document.getElementById('start-date');
+        let endDateElem = document.getElementById('end-date');
+
+        start = new Datepicker('#start-date', {
+            ranged: true,
+            onChange: function (dates) {
+                if (dates.length) {
+                    startDateElem.value = UI.formatDate(dates[0]);
+                    if (byUser) {
+                        if (UI.onUpdateDate) UI.onUpdateDate(dates[0], 'start');
+                        if (UI.onUpdateDate) UI.onUpdateDate(dates[dates.length - 1], 'end');
+                    }
                 }
-                if (UI.onUpdateDate) UI.onUpdateDate(date, 'start');
-            }
+            },
+            onRender: () => {
+                byUser = true;
+            },
+            min: mindate
         });
-        end = datepicker('#end-date', {
-            id: 1,
-            formatter: (input, date, instance) => {
-                input.value = date.toLocaleDateString();
-                if (instance.isManualSet) {
-                    instance.isManualSet = false;
-                    return;
+        end =  new Datepicker('#end-date', {
+            ranged: true,
+            onChange: function (dates) {
+                if (dates.length) {
+                    endDateElem.value = UI.formatDate(dates[dates.length - 1]);
+                    if (byUser) {
+                        if (UI.onUpdateDate) UI.onUpdateDate(dates[0], 'start');
+                        if (UI.onUpdateDate) UI.onUpdateDate(dates[dates.length - 1], 'end');
+                    }
                 }
-                if (UI.onUpdateDate) UI.onUpdateDate(date, 'end');
-            }
+            },
+            onRender: () => {
+                byUser = true;
+            },
+            min: mindate
         });
     }
     else {
@@ -59,10 +100,11 @@ UI.setDates = function (datesObj) {
         end.value = new Date(datesObj.end - datesObj.start.getTimezoneOffset() * 60 * 1000).toISOString().slice(0, 10);
     }
     else {
+        byUser = false;
         start.isManualSet = true;
         end.isManualSet = true;
-        start.setDate(datesObj.start);
-        end.setDate(datesObj.end);
+        start.setDate(toDaysArray(datesObj.start, datesObj.end));
+        end.setDate(toDaysArray(datesObj.start, datesObj.end));
     }
 };
 
