@@ -24,6 +24,9 @@
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    -moz-transition: 0.3s;
     transition: 0.3s;
     text-decoration: none;
     text-align: center;
@@ -36,15 +39,29 @@
     background-color: #666666;
 }
 
+.no-reserv {
+    height: unset!important;
+}
+
 @media (min-width: 768px) {
     .input-block {
         width: 50%;
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -moz-box-flex: 1;
+        -ms-flex-positive: 1;
         flex-grow: 1;
     }
     .user-data-col1 {
         width: 60%;
         margin-right: 3%;
         height: 100%;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: row;
+        -moz-box-orient: horizontal;
+        -moz-box-direction: normal;
+        -ms-flex-direction: row;
         flex-direction: row;
     }
     .form-input {
@@ -60,6 +77,10 @@
     }
     .input-block-wide {
         width: 50%;
+        -webkit-box-flex: 4;
+        -webkit-flex-grow: 4;
+        -moz-box-flex: 4;
+        -ms-flex-positive: 4;
         flex-grow: 4;
     }
     .wide-wrapper {

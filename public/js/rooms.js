@@ -219,7 +219,7 @@ const createPriceBlock = (data, days) => {
     let redPriceElem = document.createElement('div');
     redPriceElem.classList.add('room-card-price-red');
     redPriceElem.classList.add('flex-container');
-    redPriceElem.classList.add('hor-right');
+    if (!document.isNarrow) redPriceElem.classList.add('hor-right');
     redPriceElem.innerText = `скидка = ${UI.formatNumber((data.price * +days) - data.salePrice)} ₽`;
 
     let cardButtonHolder = document.createElement('div');

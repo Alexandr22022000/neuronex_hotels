@@ -49,24 +49,25 @@ const setPropertyValue = (value, propId) => {
 const updateStatus = (status) => {
     if(status === 'CANCELED') {
         document.getElementById('deny-button').setAttribute('style', 'display: none!important');
-        let featSum;
+        let nav;
         if (document.isNarrow) {
-            featSum = document.querySelector('.room-feat-feat');
-            featSum.classList.add('flex-container');
-            featSum.classList.add('vert-center');
-            document.querySelector('.pay-sum').setAttribute('style', 'display: none!important')
+            nav = document.querySelector('.book-nav-bar');
+            nav.classList.add('flex-container');
+            nav.classList.add('vert-center');
+            nav.classList.add('no-reserv');
         }
         else {
-            featSum = document.querySelector('.room-feat-sum');
-            featSum.classList.remove('sp-between');
-            featSum.classList.add('vert-center');
+            nav = document.querySelector('.book-nav-bar');
+            nav.classList.remove('sp-between');
+            nav.classList.add('vert-center');
+            nav.classList.add('no-reserv');
         }
 
-        featSum.innerHTML = `
+        nav.innerHTML = `
             <div style="text-align: center; margin-bottom: 10px">ВАШЕ БРОНИРОВАНИЕ ОТМЕНЕНО</div> 
             <div style="text-align: center; width: 60%"><a class="confirm-button unselectable" style="display: block" id="confirm-reserv" target="_self">Забронировать заново</a></div>
         `;
-        featSum.setAttribute('style', 'background-color: #f74a4a; color: #fffdfd; flex-direction: column')
+        nav.setAttribute('style', 'background-color: #f74a4a; color: #fffdfd; flex-direction: column')
     }
 };
 

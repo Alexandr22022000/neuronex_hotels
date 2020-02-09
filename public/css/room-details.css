@@ -15,7 +15,15 @@ textarea::-webkit-resizer {
 }
 
 .head-third-stg {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-flex: 7;
+    -webkit-flex-grow: 7;
+    -moz-box-flex: 7;
+    -ms-flex-positive: 7;
     flex-grow: 7;
     height: 100%;
     background-image: url(../images/solo-bar-3.svg);
@@ -23,6 +31,10 @@ textarea::-webkit-resizer {
 }
 
 .back-button {
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -moz-box-flex: 1;
+    -ms-flex-positive: 1;
     flex-grow: 1;
     font-size: 2em;
     text-decoration: none;
@@ -46,6 +58,12 @@ textarea::-webkit-resizer {
 
 .order-data {
     background-color: #fffbd6;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -moz-box-orient: vertical;
+    -moz-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
 }
 
@@ -60,6 +78,7 @@ textarea::-webkit-resizer {
     background-color: #e3f0e1;
     color: #279940;
     padding: 10px 15px 10px 15px;
+    width: -moz-calc(100% - 30px);
     width: calc(100% - 30px);
 }
 
@@ -67,6 +86,7 @@ textarea::-webkit-resizer {
     background-color: #e3f0e1;
     color: #279940;
     padding: 10px 15px 10px 15px;
+    width: -moz-calc(93% - 30px);
     width: calc(93% - 30px);
 }
 
@@ -78,6 +98,7 @@ textarea::-webkit-resizer {
 .user-data-form {
     background-color: #f9f5b1;
     padding: 15px 15px 10px 15px;
+    width: -moz-calc(93% - 30px);
     width: calc(93% - 30px);
 }
 
@@ -92,6 +113,8 @@ textarea::-webkit-resizer {
     font-size: 0.8em;
     -webkit-flex: 0 26%;
     -ms-flex: 0 26%;
+    -webkit-box-flex: 0;
+    -moz-box-flex: 0;
     flex: 0 26%;
     border-right: black solid 1px;
 }
@@ -100,6 +123,7 @@ textarea::-webkit-resizer {
     -webkit-box-flex: 1;
     -webkit-flex: 1 auto;
     -ms-flex: 1 auto;
+    -moz-box-flex: 1;
     flex: 1 auto;
     border: none;
     outline: none;
@@ -116,6 +140,9 @@ textarea::-webkit-resizer {
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    -moz-transition: 0.3s;
     transition: 0.3s;
     text-decoration: none;
     text-align: center;
@@ -131,6 +158,7 @@ textarea::-webkit-resizer {
 }
 
 .input-block {
+    width: -moz-calc(100% - 6px);
     width: calc(100% - 6px);
 }
 
@@ -146,13 +174,22 @@ textarea::-webkit-resizer {
         display: none;
     }
     .head-first-stg {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
         display: flex;
     }
     .head-third-stg {
+        width: -moz-calc(100% / 3);
         width: calc(100% / 3);
         background-image: none;
     }
     .head-second-stg {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
         display: flex;
     }
     .img-holder {
@@ -169,10 +206,21 @@ textarea::-webkit-resizer {
     .room-card-header {
         height: unset;
         padding: unset;
+        -webkit-box-flex: unset;
+        -webkit-flex-grow: unset;
+        -moz-box-flex: unset;
+        -ms-flex-positive: unset;
         flex-grow: unset;
     }
     .order-data {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        width: -moz-calc(100% - 320px - 2.5%);
         width: calc(100% - 320px - 2.5%);
         height: 100%;
         padding-left: 1.5%;
@@ -189,6 +237,7 @@ textarea::-webkit-resizer {
         margin-top: 20px;
         background-color: #caede2;
         padding: 15px 3% 15px 3%;
+        width: -moz-calc(93% - 6%);
         width: calc(93% - 6%);
     }
     .feat-header {
@@ -224,21 +273,32 @@ textarea::-webkit-resizer {
     .user-data-form {
         margin-top: 20px;
         padding: 10px;
+        width: -moz-calc(93% - 20px);
         width: calc(93% - 20px);
     }
     .user-data-col {
         width: 30%;
         margin-right: 3%;
         height: 100%;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
     }
     .form-info-instr {
         background-color: #caede2;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
         width: fit-content;
         border-radius: 5px;
         padding: 10px;
     }
     .form-info-uagr {
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
         width: fit-content;
         padding: 10px;
     }
@@ -246,6 +306,8 @@ textarea::-webkit-resizer {
         font-size: unset;
         -webkit-flex: unset;
         -ms-flex: unset;
+        -webkit-box-flex: unset;
+        -moz-box-flex: unset;
         flex: unset;
         width: unset;
         border: unset;
@@ -254,8 +316,10 @@ textarea::-webkit-resizer {
         -webkit-box-flex: unset;
         -webkit-flex: unset;
         -ms-flex: unset;
+        -moz-box-flex: unset;
         flex: unset;
         margin-top: 5px;
+        width: -moz-calc(100% - 10px);
         width: calc(100% - 10px);
         font-size: 1.3em;
         border-radius: 5px;
@@ -264,6 +328,7 @@ textarea::-webkit-resizer {
     }
     .form-notes {
         margin-top: 5px;
+        width: -moz-calc(100% - 10px);
         width: calc(100% - 10px);
         resize: vertical;
         height: 80%;
@@ -275,14 +340,23 @@ textarea::-webkit-resizer {
         border-color: #fefdeb;
         border-bottom: #fefdeb solid 2px;
         border-top: #fefdeb solid 2px;
+        -webkit-box-flex: 4;
+        -webkit-flex-grow: 4;
+        -moz-box-flex: 4;
+        -ms-flex-positive: 4;
         flex-grow: 4;
         width: 80%;
     }
     .wide-button-wrapper {
+        -webkit-box-flex: 4;
+        -webkit-flex-grow: 4;
+        -moz-box-flex: 4;
+        -ms-flex-positive: 4;
         flex-grow: 4;
         width: 80%;
     }
     #notes {
+        height: -moz-calc(80% - 10px);
         height: calc(80% - 10px);
         font-size: 1.3em;
         outline: none;
@@ -293,11 +367,21 @@ textarea::-webkit-resizer {
     .simple-wrapper {
         background-color: unset;
         padding: unset;
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+        -moz-box-flex: 1;
+        -ms-flex-positive: 1;
         flex-grow: 1;
         width: 80%;
         border-radius: unset;
     }
     .confirm-wrapper {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -moz-box-orient: vertical;
+        -moz-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
         border: none;
     }
