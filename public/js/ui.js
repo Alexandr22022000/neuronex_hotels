@@ -79,5 +79,26 @@ let UI = {
 
     addOnLoadListener: listener => {
         document.addEventListener("DOMContentLoaded", listener);
+    },
+
+    showPreloader: show => {
+        if (show) {
+            let preWp = document.createElement('div');
+            preWp.classList.add('lds-wp');
+            preWp.classList.add('container');
+            preWp.classList.add('hor-center');
+            preWp.classList.add('vert-center');
+
+            preWp.innerHTML = `<div class="lds-default">
+                            <div></div><div></div>
+                            <div></div><div></div>
+                            <div></div><div></div>
+                            <div></div><div></div>
+                            <div></div><div></div>
+                            <div></div><div></div>
+                        </div>`;
+            document.body.prepend(preWp);
+        }
+        else document.querySelector('.lds-wp').remove();
     }
 };
