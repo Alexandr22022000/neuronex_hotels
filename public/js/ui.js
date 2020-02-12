@@ -16,6 +16,7 @@ let UI = {
         address.innerText = hotelObj.address;
         phone.innerText = hotelObj.phone;
         phone.href = `tel:${hotelObj.phone}`;
+        name.href = hotelObj.site;
         rankNum.innerText = hotelObj.rank;
         if (hotelObj.reviews) reviews.innerText = `(${hotelObj.reviews} отзывов)`;
 

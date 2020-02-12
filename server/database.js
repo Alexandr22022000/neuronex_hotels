@@ -17,7 +17,7 @@ module.exports = () => {
             address: "пер. Базарный,12 - 634050, Томск",
             phone: "+7 (3822) 94 21 80",
             link: "akvartal",
-            site: "apartments-kem.ru",
+            site: "https://apartments-kem.ru",
             logo: "https://imgcy.trivago.com/c_lfill,d_dummy.jpeg,e_sharpen:60,f_auto,h_450,q_auto,w_450/itemimages/10/45/1045132_v6.jpeg",
         });
 

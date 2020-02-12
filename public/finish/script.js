@@ -65,6 +65,7 @@ UI.onFinishReservation = () => {
     if (isError) return;
 
     showPreloader = true;
+    UI.showPreloader(true);
     const params = QUERY.params();
     AJAX.post('/api/reservation', {
         start: params.start,
@@ -74,7 +75,6 @@ UI.onFinishReservation = () => {
         apartment: params.apartment,
         ...reservation,
     }).then(res => {
-        showPreloader = false;
         window.location.replace('/reservation?token=' + res.token + '&hotel=' + params.hotel);
     });
 };

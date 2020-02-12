@@ -31,6 +31,7 @@ UI.onCancelReservation = () => {
     if (showPreloader) return;
 
     showPreloader = true;
+    UI.showPreloader(true);
     const params = QUERY.params();
     AJAX.post('/api/reservation/cancel', {token: params.token}).then(res => {
         window.location.reload(true);
