@@ -54,14 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         end =  new Datepicker('#end-date', {
             ranged: true,
-            onChange: function (dates) {
-                if (dates.length) {
-                    endDateElem.value = UI.formatDate(dates[dates.length - 1]);
-                    if (byUser) {
-                        if (UI.onUpdateDate) UI.onUpdateDate(dates[0], 'start');
-                        if (UI.onUpdateDate) UI.onUpdateDate(dates[dates.length - 1], 'end');
-                    }
-                }
+            onChange: function (date) {
+                if (!date) return;
+                endDateElem.value = UI.formatDate(date);
+
+                if (!byUser) return;
+                if (UI.onUpdateDate) UI.onUpdateDate(date, 'end');
             },
             onRender: () => {
                 byUser = true;
@@ -104,7 +102,7 @@ UI.setDates = function (datesObj) {
         start.isManualSet = true;
         end.isManualSet = true;
         start.setDate(toDaysArray(datesObj.start, datesObj.end));
-        end.setDate(toDaysArray(datesObj.start, datesObj.end));
+        end.setDate(datesObj.end);
     }
 };
 
