@@ -99,13 +99,12 @@
     width: 90%;
 }
 
-.widget-date-end span,
-.widget-date-begin span {
-
+.widget-label {
+    width: 100%;
 }
 
-.widget-date-end input,
-.widget-date-begin input {
+#start-date,
+#end-date {
     outline: none;
     width: 100%;
     font-size: 1.3em;
@@ -113,6 +112,10 @@
     margin-bottom: 20px;
     padding-left: 10px;
     background-color: white;
+}
+
+.datepicker {
+    width: 98%;
 }
 
 @media (min-width: 576px) {
@@ -187,14 +190,12 @@
     .widget-date-begin {
         width: 45%;
     }
-    .widget-date-end span,
-    .widget-date-begin span {
-        width: 100%;
+    .widget-label {
         font-size: 1.3em;
         display: block;
     }
-    .widget-date-end input,
-    .widget-date-begin input {
+    #start-date,
+    #end-date {
         margin-bottom: unset;
     }
     .widget-subm-info {
