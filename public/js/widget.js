@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
             min: mindate
         });
         end =  new Datepicker('#end-date', {
-            ranged: true,
             onChange: function (date) {
                 if (!date) return;
                 endDateElem.value = UI.formatDate(date);
