@@ -3,7 +3,7 @@
         URL = script.src.match(/https?:\/\/.+?\//)[0] + "widget?" + script.src.replace(/^.+\?/, "");
 
     const div = document.createElement('div');
-    div.innerHTML = `<iframe src="${URL}" style="border: 0; position: absolute;"></iframe><div style="display: block; width: 100%;"></div>`;
+    div.innerHTML = `<iframe src="${URL}" style="border: 0; position: absolute; z-index: 1;"></iframe><div style="display: block; width: 100%;"></div>`;
     script.parentNode.insertBefore(div, script.nextSibling);
 
     setTimeout(() => {
