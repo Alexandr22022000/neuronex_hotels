@@ -9,6 +9,7 @@ const hotelSchema = Schema({
     link: String,
     site: String,
     logo: String,
+    disableChecker: Boolean,
     createdAt: Date,
 });
 

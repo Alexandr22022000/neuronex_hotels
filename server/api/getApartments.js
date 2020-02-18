@@ -50,6 +50,7 @@ module.exports = (req, res) => {
             if (children) selector.push({maxChildren: {$gte: children}});
 
             selector = selector.length ? {$and: selector} : {};
+            if (hotel.disableChecker) selector = {};
 
             Apartment.find({hotelId: hotel._id, ...selector}, (err, apartments) => {
                 if (err || !apartments) {

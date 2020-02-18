@@ -44,40 +44,39 @@ module.exports = (req, res) => {
                 return res.status(500).send({message: "Error: can't get reservations"});
             }
 
-            if (reservations.length)
-                return res.status(200).send({message: "Apartment already not available"});
-
-            const reservation = new Reservation({
-                hotelId: apartment.hotelId,
-                apartmentId: apartment._id,
-                start,
-                end,
-                name,
-                phone,
-                email,
-                wishes,
-                price: calcSalePrice(apartment.price, nights, apartment.link),
-                humans,
-                children,
-            });
-
-            reservation.save(e => {
-                if (e) {
-                    consoleLog("Save reservation error:");
-                    consoleLog(e);
-                    return res.status(500).send({message: "Error: can't save reservation"});
+            Hotel.findOne({_id: apartment.hotelId}, (err, hotel) => {
+                if (err || !hotel) {
+                    consoleLog("Hotel not found error:");
+                    consoleLog(err);
+                    return res.status(500).send({message: "Error: hotel not found"});
                 }
 
-                Hotel.findOne({_id: apartment.hotelId}, (err, hotel) => {
-                    if (err || !hotel) {
-                        consoleLog("Hotel not found error:");
-                        consoleLog(err);
-                        return res.status(500).send({message: "Error: hotel not found"});
+                if (reservations.length && !hotel.disableChecker)
+                    return res.status(200).send({message: "Apartment already not available"});
+
+                const reservation = new Reservation({
+                    hotelId: apartment.hotelId,
+                    apartmentId: apartment._id,
+                    start,
+                    end,
+                    name,
+                    phone,
+                    email,
+                    wishes,
+                    price: calcSalePrice(apartment.price, nights, apartment.link),
+                    humans,
+                    children,
+                });
+
+                reservation.save(e => {
+                    if (e) {
+                        consoleLog("Save reservation error:");
+                        consoleLog(e);
+                        return res.status(500).send({message: "Error: can't save reservation"});
                     }
 
                     if (email)
                         thankForReservation(email, reservation, apartment, hotel);
-
 
                     newReservation(hotel.email, reservation, apartment, hotel).then(() => {
                         res.status(200).send({token: reservation.token});

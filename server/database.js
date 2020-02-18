@@ -19,6 +19,7 @@ module.exports = () => {
             link: "akvartal",
             site: "https://apartments-kem.ru",
             logo: "https://imgcy.trivago.com/c_lfill,d_dummy.jpeg,e_sharpen:60,f_auto,h_450,q_auto,w_450/itemimages/10/45/1045132_v6.jpeg",
+            disableChecker: false,
         });
 
         hotel.save(e => {
